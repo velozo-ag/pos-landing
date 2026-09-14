@@ -1,5 +1,6 @@
 import { Merriweather, Inter } from "next/font/google";
 import "./globals.css";
+import { TransitionProvider } from "@/context/TransitionContext";
 
 const merriweather = Merriweather({
   variable: "--font-merriweather",
@@ -38,6 +39,19 @@ export const metadata = {
   ],
   authors: [{ name: "Roosty POS" }],
   creator: "Roosty POS",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png" },
+      { url: "/roosty-icon.png", sizes: "32x32", type: "image/png" },
+      { url: "/roosty-icon.png", sizes: "192x192", type: "image/png" },
+      { url: "/roosty-icon.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     title: "Roosty POS — Sistema Gastronómico y Menú QR",
     description:
@@ -46,10 +60,10 @@ export const metadata = {
     siteName: "Roosty POS",
     images: [
       {
-        url: "/R ROOSTY.png",
+        url: "/roosty2.png",
         width: 1200,
         height: 630,
-        alt: "Roosty POS",
+        alt: "Roosty POS — Software Gastronómico y Menú QR",
       },
     ],
     type: "website",
@@ -60,7 +74,7 @@ export const metadata = {
     title: "Roosty POS — Sistema Gastronómico y Menú QR",
     description:
       "Sistema gastronómico con Menú QR, pedidos online y KDS para cocina. Vender rápido, cerrar caja tranquilo.",
-    images: ["/R ROOSTY.png"],
+    images: ["/roosty2.png"],
   },
   robots: {
     index: true,
@@ -87,6 +101,7 @@ export default function RootLayout({ children }) {
         "description":
           "Sistema de Punto de Venta (POS) Gastronómico con Menú QR, pedidos online, KDS y control de caja.",
         "url": "https://roosty.site",
+        "image": "https://roosty.site/roosty2.png",
       },
       {
         "@type": "Organization",
@@ -113,7 +128,9 @@ export default function RootLayout({ children }) {
         className="min-h-screen flex flex-col font-sans bg-white text-zinc-900 antialiased selection:bg-[#e85d45]/20 selection:text-[#e85d45] relative"
         suppressHydrationWarning
       >
-        {children}
+        <TransitionProvider>
+          {children}
+        </TransitionProvider>
       </body>
     </html>
   );

@@ -103,7 +103,6 @@ export default function CashierAuditDemo() {
           {/* Turn Active Banner (Exact CAJA.png) */}
           <div className="flex items-center justify-between text-xs shrink-0 pt-0.5">
             <span className="text-[#22c55e] font-medium flex items-center gap-1.5 text-[10px]">
-              <span className="w-2 h-2 rounded-full bg-[#22c55e] animate-pulse" />
               <span>Turno Activo #1 &bull; Abierto por Administrador</span>
             </span>
             <div className="flex items-center gap-2">

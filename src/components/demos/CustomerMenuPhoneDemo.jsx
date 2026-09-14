@@ -227,7 +227,6 @@ export default function CustomerMenuPhoneDemo() {
             
             {/* Floating Badge 1: Top-Left Frosted Card */}
             <div className="absolute -top-3 -left-6 sm:-left-12 z-40 hidden sm:flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-zinc-200/90 shadow-xl shadow-zinc-950/10 pointer-events-none animate-badge-a">
-              <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse shrink-0" />
               <div className="text-left">
                 <span className="text-[10px] font-bold text-zinc-900 block leading-tight">Carta digital</span>
                 <span className="text-[9px] font-mono text-zinc-500 leading-tight">En vivo &bull; 0% Comisiones</span>

@@ -20,6 +20,7 @@ import CashierAuditDemo from "@/components/demos/CashierAuditDemo";
 import CustomerMenuPhoneDemo from "@/components/demos/CustomerMenuPhoneDemo";
 import WebOrderBarDemo from "@/components/demos/WebOrderBarDemo";
 import { SITE_CONFIG } from "@/config/site";
+import { DemoTransitionLink } from "@/context/TransitionContext";
 
 export default function FuncionalidadesPage() {
   const [activeSection, setActiveSection] = useState("salon");
@@ -541,14 +542,12 @@ export default function FuncionalidadesPage() {
               Cargamos tu carta actual gratis y te dejamos el sistema listo para operar en tu próximo turno sin contratos de permanencia.
             </p>
             <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-              <a
+              <DemoTransitionLink
                 href={SITE_CONFIG.urls.saasRegister}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl text-sm font-semibold text-white bg-[#e85d45] hover:bg-[#d44c34] shadow-md shadow-[#e85d45]/30 transition-all hover:scale-105 text-center"
+                className="w-full sm:w-auto px-7 py-3.5 rounded-xl text-sm font-semibold text-white bg-[#e85d45] hover:bg-[#d44c34] shadow-md shadow-[#e85d45]/30 transition-all hover:scale-105 text-center cursor-pointer"
               >
                 Probar Demo Gratis
-              </a>
+              </DemoTransitionLink>
               <a
                 href={SITE_CONFIG.urls.saasApp}
                 target="_blank"

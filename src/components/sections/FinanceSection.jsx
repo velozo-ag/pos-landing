@@ -42,22 +42,23 @@ export default function FinanceSection() {
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 -right-40 w-96 h-96 bg-[#e85d45]/8 blur-[130px] pointer-events-none rounded-full" />
       <div className="absolute bottom-10 -left-40 w-96 h-96 bg-emerald-500/5 blur-[130px] pointer-events-none rounded-full" />
+      <div className="absolute inset-0 bg-dots-dark pointer-events-none opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-14 md:mb-18">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-semibold text-[#e85d45] mb-4 shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-semibold text-[#e85d45] mb-4 shadow-2xs">
             <DollarSign className="w-3.5 h-3.5" />
-            <span>Control Financiero & Arqueo Ciego</span>
+            <span className="font-mono tracking-wide">Control Financiero & Arqueo Ciego</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-5 leading-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-5 leading-tight text-balance">
             La caja cierra sola. <br />
             <span className="text-[#e85d45]">Vos solo contás la plata.</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-zinc-400 font-light leading-relaxed">
+          <p className="text-base sm:text-lg text-zinc-400 font-light leading-relaxed text-balance">
             Se acabaron las horas buscando diferencias entre tickets arrugados a las 3 de la mañana. Roosty concilia efectivo, transferencias y tarjetas de forma transparente con auditoría en vivo.
           </p>
         </div>
@@ -72,10 +73,10 @@ export default function FinanceSection() {
               return (
                 <div
                   key={i}
-                  className="p-4 sm:p-5 rounded-2xl bg-[#121214] border border-zinc-800/90 hover:border-zinc-700 transition-colors"
+                  className="p-4 sm:p-5 rounded-2xl bg-[#121214] border border-zinc-800/90 hover:border-zinc-700 hover:-translate-y-0.5 transition-all duration-200 shadow-2xs group"
                 >
                   <div className="flex items-start gap-3.5">
-                    <div className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#e85d45] shrink-0">
+                    <div className="w-9 h-9 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-[#e85d45] shrink-0 group-hover:scale-105 transition-transform duration-200">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
@@ -93,7 +94,7 @@ export default function FinanceSection() {
           </div>
 
           {/* Right Column: Real Procedural Cierre de Caja & Libro Diario Demo */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 doppel-bezel-dark rounded-2xl sm:rounded-3xl p-1 sm:p-2">
             <CashierAuditDemo />
           </div>
 

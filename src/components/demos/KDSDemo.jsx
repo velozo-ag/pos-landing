@@ -77,8 +77,7 @@ export default function KDSDemo() {
                 <h3 className="font-bold text-white text-xs sm:text-sm tracking-wider">
                   COCINA & BARRA KDS
                 </h3>
-                <span className="text-[8px] font-extrabold uppercase px-1.5 py-0.2 rounded-full bg-[#042f1f] border border-[#15803d] text-[#22c55e] flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#22c55e] animate-ping" />
+                <span className="text-[9px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-[#042f1f] border border-[#15803d] text-[#22c55e]">
                   EN VIVO
                 </span>
               </div>

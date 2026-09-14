@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Globe, Printer, Zap, MessageCircle } from "lucide-react";
 import { SITE_CONFIG } from "@/config/site";
+import { DemoTransitionLink } from "@/context/TransitionContext";
 
 export default function FooterCTA() {
   return (
@@ -12,55 +13,54 @@ export default function FooterCTA() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Main CTA Block */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-800/80 border border-zinc-700/80 text-zinc-300 text-xs font-medium mb-6">
-            <span className="w-2 h-2 rounded-full bg-[#e85d45] animate-pulse" />
-            Alta en 2 minutos sin tarjeta de crédito
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-800/80 border border-zinc-700/80 text-zinc-300 text-xs font-medium mb-6 font-mono shadow-2xs">
+            <span>Alta en 2 minutos sin tarjeta de crédito</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-5 leading-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-5 leading-tight text-balance">
             Probalo un turno. <br className="hidden sm:inline" />
             <span className="text-[#e85d45]">Después no vas a querer volver.</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto mb-8 font-light">
+          <p className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto mb-8 font-light text-balance">
             100% Web en la nube, sin instalación en tu local. Compatible con cualquier impresora térmica y con migración de carta bonificada.
           </p>
 
           {/* Direct Dual Action CTAs: Self-Service + Assisted Sales */}
           <div className="max-w-md mx-auto flex flex-col sm:flex-row gap-3.5 items-center justify-center">
-            <a
+            <DemoTransitionLink
               href={SITE_CONFIG.urls.saasRegister}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm font-semibold text-white bg-[#e85d45] hover:bg-[#d44c34] shadow-lg shadow-[#e85d45]/30 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 pl-7 pr-5 py-3.5 rounded-xl text-sm font-semibold text-white bg-[#e85d45] hover:bg-[#d44c34] shadow-lg shadow-[#e85d45]/30 active:scale-[0.98] transition-all duration-150 cursor-pointer"
             >
               <span>Probar demo gratis</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
+              <span className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 transition-transform duration-150">
+                <ArrowRight className="w-3.5 h-3.5 text-white" />
+              </span>
+            </DemoTransitionLink>
 
             <a
               href={SITE_CONFIG.urls.whatsappSales}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-medium text-zinc-200 bg-zinc-800/90 hover:bg-zinc-700 border border-zinc-700 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-medium text-zinc-200 bg-zinc-800/90 hover:bg-zinc-700 border border-zinc-700 active:scale-[0.98] transition-all duration-150"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-4 h-4 text-[#e85d45]" />
               <span>Hablar con un asesor</span>
             </a>
           </div>
 
           {/* Trust Guarantees */}
-          <div className="mt-8 flex flex-wrap justify-center items-center gap-6 text-xs text-zinc-400 font-medium">
-            <div className="flex items-center gap-1.5">
-              <Globe className="w-4 h-4 text-[#e85d45]" />
+          <div className="mt-8 flex flex-wrap justify-center items-center gap-3 text-xs text-zinc-400 font-medium">
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900/70 border border-zinc-800/80">
+              <Globe className="w-3.5 h-3.5 text-[#e85d45]" />
               <span>Enlace propio incluido</span>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Printer className="w-4 h-4 text-[#e85d45]" />
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900/70 border border-zinc-800/80">
+              <Printer className="w-3.5 h-3.5 text-[#e85d45]" />
               <span>Tickets térmicos estándar</span>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Zap className="w-4 h-4 text-[#e85d45]" />
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900/70 border border-zinc-800/80">
+              <Zap className="w-3.5 h-3.5 text-[#e85d45]" />
               <span>Cero comisiones sobre ventas</span>
             </div>
           </div>

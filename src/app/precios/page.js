@@ -16,6 +16,20 @@ export const metadata = {
     title: "Planes y Precios | Roosty POS",
     description: "Inversión fija mensual o pago único de por vida para restaurantes, bares y cafeterías.",
     url: "https://roosty.site/precios",
+    images: [
+      {
+        url: "/roosty2.png",
+        width: 1200,
+        height: 630,
+        alt: "Roosty POS Planes y Precios",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Planes y Precios | Roosty POS",
+    description: "Inversión fija mensual o pago único de por vida para restaurantes, bares y cafeterías.",
+    images: ["/roosty2.png"],
   },
 };
 

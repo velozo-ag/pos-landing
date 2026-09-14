@@ -37,16 +37,18 @@ export default function MetricsBar() {
             return (
               <div
                 key={index}
-                className="py-8 sm:py-10 px-4 sm:px-6 flex flex-col justify-between first:pl-0 last:pr-0"
+                className="py-8 sm:py-10 px-4 sm:px-6 flex flex-col justify-between first:pl-0 last:pr-0 group hover:bg-[#faf9f8]/70 transition-colors duration-200"
               >
                 <div>
-                  <div className="flex items-center gap-2 mb-2 text-[#e85d45]">
-                    <Icon className="w-4 h-4" />
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-zinc-400">
+                  <div className="flex items-center gap-2.5 mb-3">
+                    <div className="w-7 h-7 rounded-md bg-zinc-100/90 border border-zinc-200/80 flex items-center justify-center text-[#e85d45] group-hover:scale-105 transition-transform duration-200 shadow-2xs">
+                      <Icon className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-500">
                       {item.title}
                     </span>
                   </div>
-                  <div className="font-serif text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight mb-2">
+                  <div className="font-serif text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight mb-2 tabular-nums">
                     {item.value}
                   </div>
                 </div>

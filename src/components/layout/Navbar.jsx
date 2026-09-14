@@ -6,6 +6,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/config/site";
+import { DemoTransitionLink } from "@/context/TransitionContext";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -75,37 +76,35 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop Right Action Buttons */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2.5">
             <a
               href={SITE_CONFIG.urls.saasApp}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-medium text-zinc-700 hover:text-zinc-950 px-3.5 py-2 rounded-xl hover:bg-zinc-100 transition-colors"
+              className="text-sm font-medium text-zinc-700 hover:text-zinc-950 px-3.5 py-2 rounded-xl hover:bg-zinc-100/80 active:scale-[0.98] transition-all duration-150"
             >
               Ver demo
             </a>
 
-            <a
+            <DemoTransitionLink
               href={SITE_CONFIG.urls.saasRegister}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white bg-[#e85d45] hover:bg-[#d44c34] shadow-sm shadow-[#e85d45]/25 hover:shadow-md hover:shadow-[#e85d45]/35 hover:-translate-y-0.5 transition-all duration-200"
+              className="group inline-flex items-center gap-2 pl-4 pr-3 py-2 rounded-xl text-sm font-semibold text-white bg-[#e85d45] hover:bg-[#d44c34] shadow-sm shadow-[#e85d45]/25 hover:shadow-md hover:shadow-[#e85d45]/35 active:scale-[0.98] transition-all duration-150 cursor-pointer"
             >
               <span>Probar gratis</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+              <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-0.5 transition-transform duration-150">
+                <ArrowRight className="w-3 h-3 text-white" />
+              </span>
+            </DemoTransitionLink>
           </div>
 
           {/* Mobile Hamburger Button */}
           <div className="flex md:hidden items-center gap-2">
-            <a
+            <DemoTransitionLink
               href={SITE_CONFIG.urls.saasRegister}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-[#e85d45]"
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white bg-[#e85d45] cursor-pointer"
             >
               Empezar
-            </a>
+            </DemoTransitionLink>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg text-zinc-700 hover:bg-zinc-100 transition-colors cursor-pointer"
@@ -149,15 +148,13 @@ export default function Navbar() {
                 >
                   Ver demo en vivo
                 </a>
-                <a
+                <DemoTransitionLink
                   href={SITE_CONFIG.urls.saasRegister}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-2.5 rounded-xl bg-[#e85d45] hover:bg-[#d44c34] text-xs font-bold text-white shadow-xs transition-colors"
+                  className="w-full text-center py-2.5 rounded-xl bg-[#e85d45] hover:bg-[#d44c34] text-xs font-bold text-white shadow-xs transition-colors cursor-pointer"
                 >
                   Probar gratis
-                </a>
+                </DemoTransitionLink>
               </div>
             </nav>
           </div>

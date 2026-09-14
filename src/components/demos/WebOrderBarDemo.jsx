@@ -197,7 +197,7 @@ export default function WebOrderBarDemo() {
                 : "w-0 opacity-0 scale-90 -mr-2"
             }`}
           >
-            <div className="h-12 px-3 rounded-xl bg-[#2a080c] border-2 border-red-500 text-red-300 flex flex-col items-center justify-center text-center shadow-md shadow-red-950/50 animate-pulse min-w-[90px]">
+            <div className="h-12 px-3 rounded-xl bg-[#2a080c] border-2 border-red-500 text-red-300 flex flex-col items-center justify-center text-center shadow-md shadow-red-950/50 min-w-[90px]">
               <span className="text-[8px] font-extrabold uppercase tracking-wider flex items-center gap-1 text-red-400 leading-none">
                 <Bell className="w-2.5 h-2.5" />
                 <span>WEB</span>

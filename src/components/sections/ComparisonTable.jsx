@@ -1,4 +1,5 @@
 import { Check, X } from "lucide-react";
+import Image from "next/image";
 
 export default function ComparisonTable() {
   const comparisonRows = [
@@ -72,7 +73,19 @@ export default function ComparisonTable() {
                     Característica
                   </th>
                   <th className="py-5 px-6 text-sm font-bold text-[#e85d45] w-1/3 bg-[#fff2ef]/50 border-x border-[#e85d45]/20">
-                    Roosty POS
+                    <div className="flex items-center gap-2">
+                      <div className="relative h-6 w-24">
+                        <Image
+                          src="/roosty2.png"
+                          alt="Roosty POS"
+                          fill
+                          className="object-contain object-left"
+                        />
+                      </div>
+                      <span className="text-[10px] font-bold tracking-widest uppercase px-1.5 py-0.5 rounded bg-[#e85d45]/10 text-[#e85d45] border border-[#e85d45]/20">
+                        POS
+                      </span>
+                    </div>
                   </th>
                   <th className="py-5 px-6 text-sm font-semibold text-zinc-500 w-1/3">
                     Sistemas Tradicionales

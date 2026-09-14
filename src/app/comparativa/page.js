@@ -16,6 +16,20 @@ export const metadata = {
     title: "Comparativa | Roosty POS vs Sistemas Tradicionales",
     description: "Comparativa frente a sistemas obsoletos con servidores locales y hardware propietario.",
     url: "https://roosty.site/comparativa",
+    images: [
+      {
+        url: "/roosty2.png",
+        width: 1200,
+        height: 630,
+        alt: "Roosty POS Comparativa",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Comparativa | Roosty POS vs Sistemas Tradicionales",
+    description: "Comparativa frente a sistemas obsoletos con servidores locales y hardware propietario.",
+    images: ["/roosty2.png"],
   },
 };
 

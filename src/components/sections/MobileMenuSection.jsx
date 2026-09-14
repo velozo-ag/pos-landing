@@ -18,6 +18,8 @@ import {
   Check,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/config/site";
+import Link from "next/link";
+import { DemoTransitionLink } from "@/context/TransitionContext";
 
 export default function MobileMenuSection() {
   const menuPresets = [
@@ -240,15 +242,13 @@ export default function MobileMenuSection() {
 
             {/* Action CTA */}
             <div className="pt-2 flex items-center gap-4">
-              <a
+              <DemoTransitionLink
                 href={SITE_CONFIG.urls.saasRegister}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white bg-[#e85d45] hover:bg-[#d44c34] active:scale-[0.98] shadow-md shadow-[#e85d45]/25 transition-all duration-150"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white bg-[#e85d45] hover:bg-[#d44c34] active:scale-[0.98] shadow-md shadow-[#e85d45]/25 transition-all duration-150 cursor-pointer"
               >
                 <span>Probar demo gratis</span>
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </DemoTransitionLink>
               <a
                 href={SITE_CONFIG.urls.saasApp}
                 target="_blank"
@@ -276,7 +276,6 @@ export default function MobileMenuSection() {
               
               {/* Floating Badge 1: Top-Left Frosted Card */}
               <div className="absolute -top-3 -left-6 sm:-left-12 z-40 hidden sm:flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-white/95 backdrop-blur-md border border-zinc-200/90 shadow-xl shadow-zinc-950/10 pointer-events-none animate-badge-a">
-                <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse shrink-0" />
                 <div className="text-left">
                   <span className="text-[10px] font-bold text-zinc-900 block leading-tight">Pedido online</span>
                   <span className="text-[9px] font-mono text-zinc-500 leading-tight">En vivo &bull; $14.200</span>

@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
   urls: {
     // Entorno SaaS central (Demo y Registro autogestionado)
     saasApp: "https://pos.roosty.site",
-    saasRegister: "https://pos.roosty.site/registro",
+    saasRegister: "/demo",
     saasLogin: "https://pos.roosty.site/login",
     
     // Canal de Ventas Asistidas (WhatsApp)

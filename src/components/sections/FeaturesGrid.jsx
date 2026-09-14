@@ -83,12 +83,12 @@ export default function FeaturesGrid() {
         
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 mb-5 leading-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 mb-5 leading-tight text-balance">
             Salón, cocina, caja y menú digital <br className="hidden sm:inline" />
             <span className="text-[#e85d45]">sin pagar software por separado.</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-zinc-600 font-normal leading-relaxed">
+          <p className="text-base sm:text-lg text-zinc-600 font-normal leading-relaxed text-balance">
             Unificá toda tu operación en un solo sistema web ágil que no te cobra comisiones por cada plato vendido ni te ata a contratos.
           </p>
         </div>
@@ -100,19 +100,19 @@ export default function FeaturesGrid() {
             return (
               <div
                 key={index}
-                className="rounded-3xl bg-white border border-zinc-200/90 p-6 flex flex-col justify-between hover:shadow-md hover:border-zinc-300 transition-all duration-200 group"
+                className="rounded-2xl bg-white border border-zinc-200/90 p-6 flex flex-col justify-between hover:shadow-md hover:border-zinc-300 hover:-translate-y-1 transition-all duration-200 group shadow-2xs"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-2xl bg-[#faf9f8] border border-zinc-200/80 flex items-center justify-center text-[#e85d45] group-hover:bg-[#e85d45] group-hover:text-white transition-all duration-200 shadow-2xs">
+                    <div className="w-10 h-10 rounded-xl bg-[#faf9f8] border border-zinc-200/80 flex items-center justify-center text-[#e85d45] group-hover:bg-[#e85d45] group-hover:text-white transition-all duration-200 shadow-2xs">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 bg-zinc-100 px-2.5 py-1 rounded-full border border-zinc-200/60">
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-zinc-500 bg-zinc-100/90 px-2.5 py-0.5 rounded border border-zinc-200/80">
                       {item.badge}
                     </span>
                   </div>
 
-                  <span className="text-[11px] font-bold text-[#e85d45] uppercase tracking-wider block mb-1">
+                  <span className="font-mono text-[11px] font-bold text-[#e85d45] uppercase tracking-wider block mb-1">
                     {item.tag}
                   </span>
 

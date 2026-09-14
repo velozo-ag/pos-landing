@@ -11,6 +11,8 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { SITE_CONFIG, getWhatsAppLink } from "@/config/site";
+import Link from "next/link";
+import { DemoTransitionLink } from "@/context/TransitionContext";
 
 export default function PricingSection({ isPreciosPage = false }) {
   const [billingType, setBillingType] = useState("ltd"); // "ltd" | "monthly"
@@ -386,18 +388,18 @@ export default function PricingSection({ isPreciosPage = false }) {
         {/* Header (H1 on /precios, H2 on Home) */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           {isPreciosPage ? (
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-950 mb-5 leading-tight">
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-950 mb-5 leading-tight text-balance">
               Elegí cómo querés <br className="hidden sm:inline" />
               <span className="text-[#e85d45]">adquirir Roosty POS.</span>
             </h1>
           ) : (
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 mb-5 leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-950 mb-5 leading-tight text-balance">
               Elegí cómo querés <br className="hidden sm:inline" />
               <span className="text-[#e85d45]">adquirir Roosty POS.</span>
             </h2>
           )}
 
-          <p className="text-base sm:text-lg text-zinc-600 font-normal leading-relaxed">
+          <p className="text-base sm:text-lg text-zinc-600 font-normal leading-relaxed text-balance">
             Sin costos ocultos por comensal, sin aumentos sorpresivos y con 14 días de prueba con todas las funciones habilitadas.
           </p>
 
@@ -466,11 +468,11 @@ export default function PricingSection({ isPreciosPage = false }) {
 
             return (
               <div
-                key={idx}
+                key={plan.code}
                 className={`rounded-3xl p-7 sm:p-8 flex flex-col justify-between h-full transition-all duration-200 ${
                   plan.popular
-                    ? "bg-white border-2 border-[#e85d45] shadow-xl relative lg:-translate-y-2"
-                    : "bg-white border border-zinc-200/90 shadow-sm hover:border-zinc-300"
+                    ? "bg-white border-2 border-[#e85d45] shadow-xl relative lg:-translate-y-2 ring-4 ring-[#e85d45]/10"
+                    : "bg-white border border-zinc-200/90 shadow-sm hover:border-zinc-300 hover:shadow-md hover:-translate-y-1"
                 }`}
               >
                 <div className="flex-1 flex flex-col">
@@ -503,7 +505,7 @@ export default function PricingSection({ isPreciosPage = false }) {
                   {/* Price in ARS */}
                   <div className="mb-5 pb-4 border-b border-zinc-100">
                     <div className="flex items-baseline gap-1.5">
-                      <span className="font-serif text-4xl sm:text-5xl font-extrabold text-zinc-950">
+                      <span className="font-serif text-4xl sm:text-5xl font-extrabold text-zinc-950 tabular-nums">
                         {pricing.price}
                       </span>
                       <span className="text-xs font-bold text-zinc-500 uppercase tracking-wider">
@@ -560,10 +562,10 @@ export default function PricingSection({ isPreciosPage = false }) {
                     href={waLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`w-full py-3.5 px-4 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 transition-all duration-200 ${plan.buttonStyle}`}
+                    className={`group w-full py-3.5 px-4 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 active:scale-[0.98] transition-all duration-150 ${plan.buttonStyle}`}
                   >
                     <span>{plan.buttonText}</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-150" />
                   </a>
                 </div>
               </div>
@@ -575,15 +577,13 @@ export default function PricingSection({ isPreciosPage = false }) {
         <div className="max-w-2xl mx-auto mb-12 text-center p-4 sm:p-5 rounded-2xl bg-white border border-zinc-200/90 shadow-2xs">
           <p className="text-xs sm:text-sm text-zinc-600 font-light">
             ¿Preferís explorar el sistema antes de elegir un plan?{" "}
-            <a
+            <DemoTransitionLink
               href={SITE_CONFIG.urls.saasRegister}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold text-[#e85d45] hover:text-[#d44c34] underline decoration-[#e85d45]/40 hover:decoration-[#e85d45] transition-all inline-flex items-center gap-1"
+              className="font-bold text-[#e85d45] hover:text-[#d44c34] underline decoration-[#e85d45]/40 hover:decoration-[#e85d45] transition-all inline-flex items-center gap-1 cursor-pointer"
             >
               <span>Creá tu cuenta demo gratis por 14 días</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </a>
+            </DemoTransitionLink>
           </p>
         </div>
 

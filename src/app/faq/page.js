@@ -15,6 +15,20 @@ export const metadata = {
     title: "Preguntas Frecuentes | Roosty POS",
     description: "Centro de ayuda y dudas frecuentes sobre el software gastronómico Roosty POS.",
     url: "https://roosty.site/faq",
+    images: [
+      {
+        url: "/roosty2.png",
+        width: 1200,
+        height: 630,
+        alt: "Roosty POS Preguntas Frecuentes",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Preguntas Frecuentes | Roosty POS",
+    description: "Centro de ayuda y dudas frecuentes sobre el software gastronómico Roosty POS.",
+    images: ["/roosty2.png"],
   },
 };
 
