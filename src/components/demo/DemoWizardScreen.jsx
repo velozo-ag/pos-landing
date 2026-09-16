@@ -28,7 +28,9 @@ import {
   Bike,
   Smartphone,
   Globe,
+  MessageCircle,
 } from 'lucide-react';
+import { SITE_CONFIG, getWhatsAppLink } from '@/config/site';
 
 // Presets dinámicos para el widget interactivo del teléfono
 const INDUSTRY_DATA = {
@@ -259,18 +261,17 @@ export default function DemoWizardScreen() {
         return;
       }
 
-      // 2. Adaptar URLs para dispositivos conectados en red local (LAN)
-      // Si el cliente entra desde su celular (ej: 192.168.1.X), reemplazamos localhost por esa IP
-      // para que el QR y el auto-login funcionen en el celular apuntando a la PC host
+      // 2. Adaptar URLs EXCLUSIVAMENTE para pruebas en red local (LAN) en desarrollo
+      // Solo si el usuario entra por IP privada (192.168.x.x o .local).
+      // En dominios públicos (roosty.site, roosty.com.ar, vercel, etc.) se respetan al 100% las URLs del backend.
       const adaptedData = { ...json.data };
       if (typeof window !== 'undefined') {
         const currentHostname = window.location.hostname;
-        if (
-          currentHostname &&
-          currentHostname !== 'localhost' &&
-          currentHostname !== '127.0.0.1' &&
-          !currentHostname.endsWith('.roosty.site')
-        ) {
+        const isLanIp =
+          /^(192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(currentHostname) ||
+          currentHostname.endsWith('.local');
+
+        if (isLanIp) {
           if (adaptedData.adminUrl) {
             adaptedData.adminUrl = adaptedData.adminUrl.replace(/localhost|127\.0\.0\.1/, currentHostname);
           }
@@ -283,7 +284,7 @@ export default function DemoWizardScreen() {
       setSuccessData(adaptedData);
       setStep(3);
     } catch {
-      setGlobalError('No se pudo conectar con el servidor.');
+      setGlobalError('No pudimos conectar con el servidor. Por favor verificá tu conexión o contactanos por WhatsApp.');
     } finally {
       setLoading(false);
     }
@@ -736,8 +737,19 @@ export default function DemoWizardScreen() {
                 </div>
 
                 {globalError && (
-                  <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs">
-                    {globalError}
+                  <div className="p-3.5 rounded-xl bg-red-50 border border-red-200/90 text-xs text-red-800 space-y-2">
+                    <p className="font-medium leading-relaxed">{globalError}</p>
+                    <a
+                      href={getWhatsAppLink(
+                        `Hola equipo Roosty, quise crear la demo de mi local "${formData.businessName || 'mi negocio'}" y ocurrió un error al procesar el alta. ¿Me ayudan a activarla?`
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 font-semibold text-[#e85d45] hover:text-[#d44c34] hover:underline"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+                      <span>Activar por WhatsApp con un asesor →</span>
+                    </a>
                   </div>
                 )}
 
