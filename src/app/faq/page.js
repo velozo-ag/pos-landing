@@ -5,9 +5,9 @@ import { MessageCircle, ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/config/site";
 
 export const metadata = {
-  title: "Preguntas Frecuentes",
+  title: "Preguntas Frecuentes — Hardware, Menú QR, Precios y Caja",
   description:
-    "Respondemos todas las dudas sobre Roosty POS: hardware de impresión, menús QR, cocina KDS, arqueo de caja y licencias de por vida.",
+    "Respondemos todas las dudas sobre Roosty POS: qué es Roosty POS, compatibilidad con impresoras térmicas de 80mm y 58mm, menús QR sin comisiones, cocina KDS, arqueo ciego de caja y planes.",
   alternates: {
     canonical: "https://roosty.site/faq",
   },
@@ -17,24 +17,75 @@ export const metadata = {
     url: "https://roosty.site/faq",
     images: [
       {
-        url: "/roosty2.png",
-        width: 1200,
-        height: 630,
+        url: "/roostylogo.png",
+        width: 300,
+        height: 186,
         alt: "Roosty POS Preguntas Frecuentes",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Preguntas Frecuentes | Roosty POS",
     description: "Centro de ayuda y dudas frecuentes sobre el software gastronómico Roosty POS.",
-    images: ["/roosty2.png"],
+    images: ["/roostylogo.png"],
   },
 };
 
 export default function FAQPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué es Roosty POS y para qué tipo de locales gastronómicos sirve?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Roosty POS es un sistema de punto de venta y software de gestión gastronómica 100% web en la nube diseñado para bares, cervecerías, cafeterías, pizzerías, restaurantes y locales de delivery o takeaway. Unifica el mapa de mesas del salón, la comanda de cocina en pantalla KDS o impresora térmica, la carta digital QR con pedidos por WhatsApp sin comisiones y el arqueo ciego de caja.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo funcionan el Abono Anual con 2 meses de regalo y la Licencia Founder?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Al contratar el Abono Anual congelás tu tarifa por todo un año y recibís 2 meses completos de regalo. También podés elegir el Abono Mensual sin permanencia o consultar por los cupos limitados de la Licencia Founder de pago único de por vida.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "¿Tengo que instalar algún programa o comprar computadoras caras?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Roosty POS funciona 100% en la nube desde cualquier navegador web. Podés usar las computadoras que ya tengas en el local, notebooks, tablets Android, iPads o los celulares de tus mozos.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué impresoras térmicas puedo usar para comandas y tickets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Podés usar cualquier impresora térmica estándar del mercado (de 80mm o 58mm) conectada por USB, cable de red (LAN/Wi-Fi) o Bluetooth.",
+        },
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo es el Menú QR para los clientes del local?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tu negocio recibe su propio subdominio personalizado (ej. tunegocio.roosty.site) con tu logo, fotos y colores. Tus clientes eligen adicionales en vivo y envían su pedido directo a tu WhatsApp y a tu pantalla POS con 0% de comisiones.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white overflow-x-hidden w-full max-w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Navbar />
 
       <main className="flex-1 pt-32 pb-20 md:pt-36 w-full max-w-full overflow-x-hidden">

@@ -66,11 +66,12 @@ export function TransitionProvider({ children }) {
               ${transitionStep === 'loading' || transitionStep === 'lifting' ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
             `}
           >
-            <div className="relative h-9 w-40 mb-5">
+            <div className="relative h-11 w-40 mb-5">
               <Image
-                src="/roosty2.png"
+                src="/roostylogoname.png"
                 alt="Roosty POS"
                 fill
+                sizes="160px"
                 priority
                 className="object-contain"
               />

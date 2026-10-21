@@ -6,9 +6,9 @@ import { Zap, Globe, Printer } from "lucide-react";
 import { SITE_CONFIG } from "@/config/site";
 
 export const metadata = {
-  title: "Comparativa — Roosty POS vs Sistemas Tradicionales",
+  title: "Comparativa — Roosty POS vs Sistemas Gastronómicos Tradicionales",
   description:
-    "Compará Roosty POS frente a los sistemas gastronómicos tradicionales: hardware, velocidad de salón, comisiones de menú QR y puesta en marcha.",
+    "Compará Roosty POS frente a los sistemas gastronómicos tradicionales: 100% web en la nube, cero hardware propietario, velocidad de salón, menú QR con 0% de comisiones y arqueo ciego.",
   alternates: {
     canonical: "https://roosty.site/comparativa",
   },
@@ -18,18 +18,18 @@ export const metadata = {
     url: "https://roosty.site/comparativa",
     images: [
       {
-        url: "/roosty2.png",
-        width: 1200,
-        height: 630,
+        url: "/roostylogo.png",
+        width: 300,
+        height: 186,
         alt: "Roosty POS Comparativa",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Comparativa | Roosty POS vs Sistemas Tradicionales",
     description: "Comparativa frente a sistemas obsoletos con servidores locales y hardware propietario.",
-    images: ["/roosty2.png"],
+    images: ["/roostylogo.png"],
   },
 };
 

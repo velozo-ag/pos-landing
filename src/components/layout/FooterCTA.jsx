@@ -69,12 +69,13 @@ export default function FooterCTA() {
         {/* Footer Navigation & Credits */}
         <div className="border-t border-zinc-800/80 pt-10 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-zinc-500">
           <div className="flex items-center gap-3">
-            <div className="relative h-7 w-28">
+            <div className="relative h-8 w-28">
               <Image
-                src="/roosty2.png"
-                alt="Roosty"
+                src="/roostylogoname.png"
+                alt="Roosty POS"
                 fill
-                className="object-contain object-left invert opacity-90"
+                sizes="112px"
+                className="object-contain object-left"
               />
             </div>
             <span className="text-zinc-600">|</span>

@@ -9,8 +9,12 @@ export default function FAQSection() {
 
   const faqs = [
     {
-      q: "¿Cómo funciona la licencia Lifetime Deal (Pago Único de por Vida)?",
-      a: "Es una oferta exclusiva de lanzamiento para locales fundadores con cupos limitados. Realizás un único pago hoy y el sistema es tuyo para siempre: sin mensualidades, sin aumentos por inflación y con todas las actualizaciones de software futuras bonificadas. Incluye 1 licencia para tu local físico con subdominio propio.",
+      q: "¿Qué es Roosty POS y para qué tipo de locales gastronómicos sirve?",
+      a: "Roosty POS es un sistema de punto de venta y software de gestión gastronómica 100% web en la nube diseñado para bares, cervecerías, cafeterías, pizzerías, restaurantes y locales de delivery o takeaway. Unifica el mapa de mesas del salón, la comanda de cocina en pantalla KDS o impresora térmica, la carta digital QR con pedidos por WhatsApp sin comisiones y el arqueo ciego de caja.",
+    },
+    {
+      q: "¿Cómo funcionan el Abono Anual con 2 meses de regalo y la Licencia Founder?",
+      a: "Al contratar el Abono Anual congelás tu tarifa por todo un año y te regalamos 2 meses completos sin cargo, evitando cualquier aumento por inflación durante 12 meses. También podés optar por el Abono Mensual sin permanencia, o consultar disponibilidad para la Licencia Founder de pago único de por vida con cupos limitados.",
     },
     {
       q: "¿Tengo que instalar algún programa o comprar computadoras caras?",
@@ -18,15 +22,15 @@ export default function FAQSection() {
     },
     {
       q: "¿Qué impresoras térmicas puedo usar para comandas y tickets?",
-      a: "Podés usar cualquier impresora térmica estándar del mercado (de 80mm o 58mm) que se conecte por USB, cable de red o Bluetooth. El sistema imprime directo desde el navegador sin instalar controladores raros.",
+      a: "Podés usar cualquier impresora térmica estándar del mercado de 80mm o 58mm que se conecte por USB, cable de red o Bluetooth. El sistema imprime directo desde el navegador sin instalar controladores raros.",
     },
     {
       q: "¿Cómo es el Menú QR para los clientes del local?",
-      a: "Tu negocio tiene su propio enlace personalizado con tu logo, fotos y colores. Tus clientes pueden ver los platos destacados, elegir adicionales interactivos (salsas, guarniciones, puntos de carne), pedir por WhatsApp y seguir el estado de su comida en tiempo real con 0% de comisiones.",
+      a: "Tu negocio tiene su propio enlace personalizado con tu logo, fotos y colores. Tus clientes pueden ver los platos destacados, elegir adicionales interactivos como salsas, guarniciones o puntos de carne, pedir por WhatsApp y seguir el estado de su comida en tiempo real con 0% de comisiones.",
     },
     {
       q: "¿Cómo cargo los platos y precios de mi local al sistema?",
-      a: "Podés crearlos vos mismo en minutos desde el panel de control o nuestro equipo de soporte carga toda tu carta gratis (a partir de una foto de tu menú, un PDF o una lista) antes de tu primer turno.",
+      a: "Podés crearlos vos mismo en minutos desde el panel de control o nuestro equipo de soporte carga toda tu carta gratis a partir de una foto de tu menú, un PDF o una lista antes de tu primer turno.",
     },
     {
       q: "¿Qué opciones tengo para el despacho en cocina?",

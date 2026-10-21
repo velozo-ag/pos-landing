@@ -39,10 +39,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
           
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative h-7 w-28 sm:h-8 sm:w-32 transition-transform duration-200 group-hover:opacity-85">
+          <Link href="/" className="flex items-center gap-2 group" aria-label="Roosty POS Inicio">
+            <div className="relative h-8 w-28 sm:h-9 sm:w-32 transition-transform duration-200 group-hover:scale-[1.02]">
               <Image
-                src="/roosty2.png"
+                src="/roostylogoname.png"
                 alt="Roosty POS"
                 fill
                 sizes="(max-width: 640px) 112px, 128px"

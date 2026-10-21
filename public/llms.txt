@@ -1,0 +1,42 @@
+# Roosty POS — Sistema de Punto de Venta (POS) y Gestión Gastronómica
+
+> Roosty POS (https://roosty.site) es un software gastronómico y sistema de punto de venta (POS) 100% web en la nube (Cloud SaaS) diseñado en Argentina para restaurantes, bares, cervecerías, cafeterías, pizzerías y locales de comida rápida (takeaway y delivery).
+
+## Identidad de Marca
+- **Nombre oficial:** Roosty POS
+- **Sitio web oficial:** https://roosty.site
+- **Aplicación SaaS / Demo:** https://pos.roosty.site
+- **Registro de prueba gratuita (14 días sin tarjeta):** https://roosty.site/demo
+- **Logotipo oficial:** https://roosty.site/roostylogo.png
+- **Icono oficial:** https://roosty.site/roostyicon.png
+- **Contacto de Ventas y Soporte (WhatsApp):** +54 9 3482 626653
+
+## Propuesta de Valor Clave
+1. **100% Web en la Nube (Cero Instalaciones):** Funciona desde cualquier navegador en PC, notebook, tablet Android, iPad o celular sin servidores locales ni instalaciones técnicas.
+2. **Menú Digital QR con Subdominio Propio y 0% Comisiones:** Cada local obtiene su propio enlace personalizado (ej. `tunegocio.roosty.site`) con fotos reales, cálculo de adicionales en vivo y envío de pedidos formateados directo a WhatsApp sin pagar comisiones por venta.
+3. **Salón Dinámico de Alta Velocidad:** Mapa visual de mesas por sectores (Salón, Patio, Terraza, Barra, VIP), cronómetros de ocupación en vivo, barra de cuentas activas en paralelo y atajos de teclado (`M` para Spotlight de mesas, `T` para mostrador/takeaway, `F8` para marchar comanda a cocina, `F9` para cobro express).
+4. **Cocina Flexible (KDS Digital o Impresión Térmica):** Soporta pantallas táctiles KDS con semáforos de demora, impresión física en comanderas térmicas universales de 80mm o 58mm (USB, Red o Bluetooth), o modo híbrido.
+5. **Control de Caja y Arqueo Ciego:** Apertura obligatoria con fondo inicial, arqueo ciego para evitar diferencias de caja, libro diario de ingresos/egresos menores y exportación a Excel/CSV.
+
+## Planes y Precios en Pesos Argentinos
+Roosty POS ofrece 14 días de prueba gratis con carga de menú inicial bonificada y tres modalidades de contratación:
+- **Abono Anual con 2 meses de regalo:**
+  - **Starter Takeaway:** $25.000 ARS por mes en abono anual de $300.000 ARS. 1 terminal de mostrador, hasta 3 usuarios con Roles y Permisos, venta directa de mostrador, carta digital QR con 0% comisiones y cierre de turno diario.
+  - **Pro Salón:** $45.800 ARS por mes en abono anual de $550.000 ARS. Multi-dispositivo en simultáneo, pantalla KDS interactiva en cocina con separación entre Cocina y Barra, mapa de hasta 30 mesas, hasta 15 mozos y cajeros, arqueo ciego antifraude, libro diario de gastos, fila de delivery con ticket para cadete y exportación a Excel.
+  - **Business Enterprise:** $79.100 ARS por mes en abono anual de $950.000 ARS. Mesas, terminales y usuarios ilimitados con Roles y Permisos, múltiples pantallas KDS en vivo para Cocina y Barra, auditoría histórica completa y soporte VIP 24/7.
+- **Abono Mensual sin contratos de permanencia:**
+  - **Starter Takeaway:** $30.000 ARS/mes.
+  - **Pro Salón:** $55.000 ARS/mes.
+  - **Business Enterprise:** $95.000 ARS/mes por sucursal.
+- **Licencia Founder de Pago Único de por Vida con cupos limitados:**
+  - **Starter Takeaway Founder:** $420.000 ARS pago único, edición limitada a 5 licencias.
+  - **Pro Salón Founder:** $750.000 ARS pago único, edición limitada a 5 licencias.
+  - **Business Enterprise Founder:** $1.290.000 ARS pago único, edición limitada a 2 licencias.
+
+## Rutas Principales del Sitio
+- [Inicio](https://roosty.site): Resumen ejecutivo de Roosty POS, métricas operativas, demos interactivas y planes.
+- [Módulos y Funcionalidades](https://roosty.site/funcionalidades): Guía detallada de Salón y Mesas, Carta Digital QR, Cocina KDS y Caja/Finanzas.
+- [Planes y Precios](https://roosty.site/precios): Comparador de planes (Abono Anual 10 meses, Abono Mensual y Licencia Founder) y matriz de 25 características.
+- [Comparativa](https://roosty.site/comparativa): Diferencias entre Roosty POS y los sistemas gastronómicos tradicionales.
+- [Preguntas Frecuentes](https://roosty.site/faq): Respuestas sobre impresoras térmicas, funcionamiento en la nube, carta QR y licencias.
+- [Crear Demo Gratis](https://roosty.site/demo): Alta autogestionada en 2 minutos para probar el sistema en vivo.

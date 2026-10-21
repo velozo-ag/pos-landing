@@ -15,179 +15,218 @@ import Link from "next/link";
 import { DemoTransitionLink } from "@/context/TransitionContext";
 
 export default function PricingSection({ isPreciosPage = false }) {
-  const [billingType, setBillingType] = useState("ltd"); // "ltd" | "monthly"
+  const [billingType, setBillingType] = useState("annual"); // "annual" | "monthly" | "ltd"
   const [showMatrix, setShowMatrix] = useState(false);
 
   const plans = [
     {
       code: "STARTER_TAKEAWAY",
       name: "Starter Takeaway",
-      badge: "Mostrador & Delivery",
-      headline: "Velocidad extrema de mostrador, cero enredos y pedidos online sin comisiones.",
-      target: "Cafeterías al paso, hamburgueserías, dark kitchens, food trucks y rotiserías.",
+      badge: "1 Puesto en Mostrador",
+      headline: "Tu puesto de mostrador y carta digital listos para vender en el día, sin comisiones.",
+      target: "Cafeterías al paso, food trucks, heladerías, panaderías y locales de retiro en mostrador.",
       monthly: {
         price: "$30.000",
         period: "/mes",
-        note: "Abono mensual fijo sin contratos de permanencia",
+        note: "Abono mensual fijo sin contratos de permanencia.",
+      },
+      annual: {
+        price: "$25.000",
+        oldPrice: "$30.000",
+        period: "/mes • abono anual de $300.000",
+        note: "Contratás por un año, te regalamos 2 meses y congelás tarifa.",
       },
       ltd: {
-        price: "$250.000",
+        price: "$420.000",
         period: "pago único de por vida",
-        note: "Equivale a ~7 meses de abono. No pagás nunca más una cuota.",
-        spots: "Cupo de lanzamiento: Primeros 15 locales",
+        note: "Un solo pago para tu local. No pagás nunca más una cuota mensual.",
+        spots: "Edición limitada a 5 licencias disponibles",
       },
       popular: false,
-      buttonText: billingType === "ltd" ? "Consultar Licencia Founder" : "Probar 14 días gratis",
+      buttonText:
+        billingType === "ltd"
+          ? "Consultar Cupo Founder"
+          : billingType === "annual"
+          ? "Elegir Plan Anual"
+          : "Probar 14 días gratis",
       buttonStyle: "bg-zinc-900 hover:bg-zinc-800 text-white shadow-xs",
-      whatsappMessage: billingType === "ltd"
-        ? "Hola! Quiero consultar disponibilidad para la Licencia Founder de por vida del plan Starter Takeaway."
-        : "Hola! Quiero probar 14 días gratis del plan Starter Takeaway de Roosty POS.",
+      whatsappMessage:
+        billingType === "ltd"
+          ? "Hola! Quiero consultar disponibilidad para la Licencia Founder de por vida del plan Starter Takeaway."
+          : billingType === "annual"
+          ? "Hola! Quiero contratar el Abono Anual con 2 meses de regalo del plan Starter Takeaway de Roosty POS."
+          : "Hola! Quiero probar 14 días gratis del plan Starter Takeaway de Roosty POS.",
       limits: {
-        tables: "0 mesas (Modo Mostrador / Takeaway)",
-        users: "Hasta 5 usuarios con PIN",
+        tables: "1 terminal de mostrador",
+        users: "Hasta 3 usuarios",
       },
       keyFeatures: [
-        "Terminal POS de venta rápida con tickets numerados (#VR-101)",
-        "Catálogo con buscador instantáneo y carga en 1 toque",
-        "Cobro express en efectivo, QR y tarjetas",
-        "Menú digital con identidad propia y subdominio",
-        "Recepción de pedidos online con confirmación a WhatsApp",
-        "Ticket para cadete con cálculo de vuelto a llevar",
-        "Seguimiento de pedidos en tiempo real para el cliente",
-        "Turno de caja con fondo inicial y arqueo ciego",
-        "Libro diario de ingresos y gastos menores",
-        "Todas las actualizaciones futuras bonificadas",
+        "1 puesto de caja para venta directa en mostrador",
+        "Catálogo veloz con adicionales, variantes y notas de pedido",
+        "Cobro express en efectivo, QR, transferencia y tarjetas",
+        "Carta digital QR con diseño de marca y subdominio propio",
+        "Pedidos online directos a tu WhatsApp con 0% de comisión",
+        "Apertura y cierre de turno con resumen diario de caja",
+        "Impresión de tickets térmicos de mostrador y actualizaciones incluidas",
       ],
     },
     {
       code: "PRO_SALON",
       name: "Pro Salón",
       badge: "El Plan Más Elegido",
-      headline: "El control total de tu salón, barra y cocina con comanda ágil y KDS en vivo.",
-      target: "Bares, cervecerías, restaurantes tradicionales, parrillas y pizzerías con salón.",
+      headline: "Operación gastronómica completa: salón, cocina KDS, múltiples dispositivos y auditoría de caja.",
+      target: "Restaurantes, bares, cervecerías, pizzerías, cafeterías con mesas y dark kitchens de alto flujo.",
       monthly: {
         price: "$55.000",
         period: "/mes",
-        note: "El estándar más completo para locales con atención en salón",
+        note: "El estándar completo para locales con salón, cocina y delivery activo.",
+      },
+      annual: {
+        price: "$45.800",
+        oldPrice: "$55.000",
+        period: "/mes • abono anual de $550.000",
+        note: "Contratás por un año, te regalamos 2 meses y congelás tarifa.",
       },
       ltd: {
-        price: "$450.000",
+        price: "$750.000",
         period: "pago único de por vida",
-        note: "Inversión recuperada en 7 meses. Chau aumentos por inflación.",
-        spots: "Cupo de lanzamiento: Primeros 20 locales",
+        note: "Un solo pago para tu local. Amortizás el sistema para siempre.",
+        spots: "Edición limitada a 5 licencias disponibles",
       },
       popular: true,
-      buttonText: billingType === "ltd" ? "Consultar Licencia Pro Founder" : "Probar 14 días gratis",
+      buttonText:
+        billingType === "ltd"
+          ? "Consultar Cupo Pro Founder"
+          : billingType === "annual"
+          ? "Elegir Pro Anual"
+          : "Probar 14 días gratis",
       buttonStyle: "bg-[#e85d45] hover:bg-[#d44c34] text-white shadow-md shadow-[#e85d45]/25",
-      whatsappMessage: billingType === "ltd"
-        ? "Hola! Quiero consultar disponibilidad para la Licencia Founder de por vida del plan Pro Salón."
-        : "Hola! Quiero probar 14 días gratis del plan Pro Salón de Roosty POS.",
+      whatsappMessage:
+        billingType === "ltd"
+          ? "Hola! Quiero consultar disponibilidad para la Licencia Founder de por vida del plan Pro Salón."
+          : billingType === "annual"
+          ? "Hola! Quiero contratar el Abono Anual con 2 meses de regalo del plan Pro Salón de Roosty POS."
+          : "Hola! Quiero probar 14 días gratis del plan Pro Salón de Roosty POS.",
       limits: {
-        tables: "Hasta 30 mesas dinámicas",
+        tables: "Hasta 30 mesas y multi-terminal",
         users: "Hasta 15 mozos y cajeros",
       },
       keyFeatures: [
-        "Todo lo incluido en el plan Starter Takeaway",
-        "Mapa de mesas con sectores (Salón, Patio, Terraza, Barra, VIP)",
-        "Estados en vivo con cronómetro de permanencia por mesa",
-        "Asignación rápida de mozos y comensales por cuenta",
-        "Atajo Spotlight de mesas en 1 segundo por teclado (M)",
-        "Barra de mesas activas para saltar entre cuentas sin salir",
-        "Tandas de marcha a cocina sin duplicar platos (F8)",
-        "Pantalla KDS táctil interactiva o comanderas térmicas",
-        "Checkout con pagos divididos y cobros mixtos",
-        "Dashboard con reportes de ventas y exportación a Excel",
+        "Todo lo de Starter más uso simultáneo en PC de caja, tablets y celulares",
+        "Pantalla KDS interactiva en cocina con semáforo de demoras en vivo",
+        "Separación automática de comandas por sector entre Cocina y Barra",
+        "Mapa interactivo de hasta 30 mesas con sectores y cronómetro de espera",
+        "Marcha de platos por tandas y barra rápida de cuentas abiertas en paralelo",
+        "División de cuenta por comensal o por ítem con cobros mixtos",
+        "Arqueo de caja ciego antifraude para detectar faltantes al cerrar turno",
+        "Libro diario de gastos, pago a proveedores y retiro de efectivo",
+        "Fila de delivery en vivo con ticket para cadete, vuelto exacto y rastreo web",
+        "Reportes de ventas exportables a Excel y soporte prioritario en horario pico",
       ],
     },
     {
       code: "BUSINESS_ENTERPRISE",
       name: "Business Enterprise",
       badge: "Capacidad Masiva",
-      headline: "Potencia masiva, capacidad sin límites y soporte prioritario para alto volumen.",
-      target: "Cervecerías multiespacio (+50 mesas), grandes salones, grupos y franquicias.",
+      headline: "Escala ilimitada, estaciones sin tope y soporte VIP 24/7 para operaciones de alto volumen.",
+      target: "Grandes salones, cervecerías multiespacio, patios gastronómicos, cadenas y franquicias.",
       monthly: {
         price: "$95.000",
         period: "/sucursal /mes",
-        note: "Para operaciones masivas y múltiples terminales",
+        note: "Para operaciones masivas con múltiples cajas y comanderas.",
+      },
+      annual: {
+        price: "$79.100",
+        oldPrice: "$95.000",
+        period: "/sucursal /mes • abono anual de $950.000",
+        note: "Contratás por un año con 2 meses de regalo y soporte VIP 24/7.",
       },
       ltd: {
-        price: "$750.000",
+        price: "$1.290.000",
         period: "pago único de por vida",
-        note: "Capacidad ilimitada para siempre sin cuotas mensuales.",
-        spots: "Cupo de lanzamiento: Primeros 5 locales",
+        note: "Capacidad ilimitada con un único pago y cero cuotas mensuales.",
+        spots: "Edición limitada a 2 licencias disponibles",
       },
       popular: false,
-      buttonText: billingType === "ltd" ? "Hablar con un Asesor VIP" : "Hablar con un asesor",
+      buttonText:
+        billingType === "ltd"
+          ? "Hablar con un Asesor VIP"
+          : billingType === "annual"
+          ? "Solicitar Plan Anual Enterprise"
+          : "Hablar con un asesor",
       buttonStyle: "bg-white hover:bg-zinc-50 text-zinc-900 border border-zinc-300 shadow-xs",
-      whatsappMessage: billingType === "ltd"
-        ? "Hola! Quiero asesoramiento para la Licencia Founder Enterprise de Roosty POS."
-        : "Hola! Quiero solicitar una demo y asesoramiento para el plan Business Enterprise de Roosty POS.",
+      whatsappMessage:
+        billingType === "ltd"
+          ? "Hola! Quiero asesoramiento para la Licencia Founder Enterprise de Roosty POS."
+          : billingType === "annual"
+          ? "Hola! Quiero contratar el Abono Anual con 2 meses de regalo del plan Business Enterprise de Roosty POS."
+          : "Hola! Quiero solicitar una demo y asesoramiento para el plan Business Enterprise de Roosty POS.",
       limits: {
-        tables: "Mesas Ilimitadas",
-        users: "Usuarios y Mozos Ilimitados",
+        tables: "Mesas y terminales ilimitadas",
+        users: "Personal y mozos ilimitados",
       },
       keyFeatures: [
-        "Todo lo incluido en el plan Pro Salón",
-        "Mesas, sectores físicos y barras de despacho sin restricciones",
-        "Cuentas de usuario ilimitadas con roles y PIN individual",
-        "Arquitectura multi-estación (PCs de caja + tablets de mozos)",
-        "Pantallas KDS independientes para Cocina, Parrilla y Barra",
-        "Migración asistida y carga de cartas complejas en 30 min",
-        "Configuración de branding integral y subdominio propio",
-        "Auditoría histórica de turnos y métricas avanzadas",
-        "Soporte técnico prioritario 24/7 y garantía de disponibilidad",
+        "Todo lo incluido en el plan Pro Salón sin límites de capacidad",
+        "Mesas, salones, terrazas y barras de despacho ilimitadas",
+        "Terminales de caja y dispositivos de mozos simultáneos sin límite",
+        "Múltiples pantallas KDS en vivo para Cocina y Barra",
+        "Cuentas de personal ilimitadas con Roles y Permisos",
+        "Auditoría histórica de turnos, anulaciones y trazabilidad completa",
+        "Puesta en marcha VIP con migración de carta completa en menos de 30 minutos",
+        "Soporte técnico dedicado 24/7 con prioridad máxima en fines de semana",
+        "Acuerdo de nivel de servicio con garantía de disponibilidad continua",
       ],
     },
   ];
 
   const comparisonMatrix = [
     {
-      category: "Capacidad & Salón",
+      category: "Capacidad, Dispositivos y Salón",
       rows: [
         {
-          feature: "Capacidad de Mesas",
-          starter: "0 mesas (Takeaway)",
-          pro: "Hasta 30 mesas",
-          enterprise: "Ilimitadas",
+          feature: "Dispositivos Simultáneos en Vivo",
+          starter: "1 terminal de mostrador",
+          pro: "Multi-dispositivo simultáneo",
+          enterprise: "Terminales ilimitadas",
           type: "text",
         },
         {
-          feature: "Cuentas de Personal (Staff con PIN)",
-          starter: "Hasta 5 usuarios",
-          pro: "Hasta 15 usuarios",
-          enterprise: "Ilimitadas",
+          feature: "Capacidad de Salón y Mesas",
+          starter: "Solo Mostrador",
+          pro: "Hasta 30 mesas y sectores",
+          enterprise: "Mesas y sectores ilimitados",
           type: "text",
         },
         {
-          feature: "Venta Rápida / Mostrador (Atajo T)",
+          feature: "Cuentas de Personal con Roles y Permisos",
+          starter: "Hasta 3 usuarios",
+          pro: "Hasta 15 mozos y cajeros",
+          enterprise: "Usuarios ilimitados",
+          type: "text",
+        },
+        {
+          feature: "Venta Rápida de Mostrador",
           starter: true,
           pro: true,
           enterprise: true,
           type: "boolean",
         },
         {
-          feature: "Mapa de Salón y Sectores Dinámicos",
+          feature: "Mapa de Salón con Cronómetro de Espera en Vivo",
           starter: false,
           pro: true,
           enterprise: true,
           type: "boolean",
         },
         {
-          feature: "Cronómetro de Ocupación en Vivo por Mesa",
+          feature: "Toma de Comandas desde Celular o Tablet del Mozo",
           starter: false,
           pro: true,
           enterprise: true,
           type: "boolean",
         },
         {
-          feature: "Control de Comensales y Mozos por Mesa",
-          starter: false,
-          pro: true,
-          enterprise: true,
-          type: "boolean",
-        },
-        {
-          feature: "Spotlight de Mesas por Teclado (Atajo M)",
+          feature: "Barra Rápida de Mesas Abiertas y Buscador por Teclado",
           starter: false,
           pro: true,
           enterprise: true,
@@ -196,123 +235,97 @@ export default function PricingSection({ isPreciosPage = false }) {
       ],
     },
     {
-      category: "Comandas & Terminal POS",
+      category: "Cocina KDS y Comanderas",
       rows: [
         {
-          feature: "Buscador de Catálogo Instantáneo (/ o Ctrl+K)",
-          starter: true,
-          pro: true,
-          enterprise: true,
-          type: "boolean",
+          feature: "Pantalla KDS Interactiva con Semáforo de Demoras",
+          starter: false,
+          pro: "Incluida",
+          enterprise: "Múltiples pantallas KDS en vivo",
+          type: "text",
         },
         {
-          feature: "Pool de Adicionales & Extras en Vivo",
-          starter: true,
-          pro: true,
-          enterprise: true,
-          type: "boolean",
-        },
-        {
-          feature: "Notas de Cocina Específicas por Plato",
-          starter: true,
-          pro: true,
-          enterprise: true,
-          type: "boolean",
-        },
-        {
-          feature: "Cobro Express en Efectivo (Fast Cash)",
-          starter: true,
-          pro: true,
-          enterprise: true,
-          type: "boolean",
-        },
-        {
-          feature: "Barra de Mesas Activas en Paralelo",
+          feature: "Derivación Automática entre Cocina y Barra",
           starter: false,
           pro: true,
           enterprise: true,
           type: "boolean",
         },
         {
-          feature: "Multi-estación en Simultáneo (PCs + Tablets)",
+          feature: "Marcha de Platos por Tandas sin Duplicar Comandas",
           starter: false,
-          pro: "Hasta 2 terminales",
-          enterprise: "Ilimitadas sincronizadas",
+          pro: true,
+          enterprise: true,
+          type: "boolean",
+        },
+        {
+          feature: "Buscador Instantáneo con Adicionales y Notas por Plato",
+          starter: true,
+          pro: true,
+          enterprise: true,
+          type: "boolean",
+        },
+        {
+          feature: "Impresión de Tickets Térmicos 80mm y 58mm",
+          starter: "Ticket de mostrador",
+          pro: "Caja y comanderas por sector",
+          enterprise: "Impresoras ilimitadas",
           type: "text",
         },
       ],
     },
     {
-      category: "Cocina & Despacho",
+      category: "Caja, Auditoría y Finanzas",
       rows: [
         {
-          feature: "Despacho por Tandas a Cocina (F8)",
+          feature: "Apertura y Cierre de Turno con Fondo Inicial",
+          starter: true,
+          pro: true,
+          enterprise: true,
+          type: "boolean",
+        },
+        {
+          feature: "Arqueo de Caja Ciego Antifraude al Cerrar Turno",
           starter: false,
           pro: true,
           enterprise: true,
           type: "boolean",
         },
         {
-          feature: "Impresión de Tickets Térmicos (80mm / 58mm)",
-          starter: "Opcional",
+          feature: "Libro Diario de Gastos, Retiros y Pago a Proveedores",
+          starter: false,
           pro: true,
           enterprise: true,
           type: "boolean",
         },
         {
-          feature: "Pantalla KDS Digital Interactiva con Semáforo",
+          feature: "División de Cuenta por Comensal y Cobros Mixtos",
           starter: false,
           pro: true,
-          enterprise: "Multi-pantalla (Cocina/Barra)",
+          enterprise: true,
+          type: "boolean",
+        },
+        {
+          feature: "Reportes de Ventas y Exportación Contable a Excel",
+          starter: false,
+          pro: true,
+          enterprise: true,
+          type: "boolean",
+        },
+        {
+          feature: "Auditoría Histórica de Anulaciones y Movimientos",
+          starter: false,
+          pro: "Historial de cierres",
+          enterprise: "Trazabilidad completa",
           type: "text",
         },
       ],
     },
     {
-      category: "Caja & Finanzas",
+      category: "Carta Digital y Logística de Delivery",
       rows: [
         {
-          feature: "Turnos de Caja con Fondo Inicial Obligatorio",
-          starter: true,
-          pro: true,
-          enterprise: true,
-          type: "boolean",
-        },
-        {
-          feature: "Arqueo Ciego y Cálculo de Diferencias",
-          starter: true,
-          pro: true,
-          enterprise: true,
-          type: "boolean",
-        },
-        {
-          feature: "Libro Diario de Gastos e Ingresos Menores",
-          starter: true,
-          pro: true,
-          enterprise: true,
-          type: "boolean",
-        },
-        {
-          feature: "Historial de Cierres y Exportación a Excel",
-          starter: true,
-          pro: true,
-          enterprise: true,
-          type: "boolean",
-        },
-        {
-          feature: "Checkout Multimedio y Pagos Divididos",
-          starter: true,
-          pro: true,
-          enterprise: true,
-          type: "boolean",
-        },
-      ],
-    },
-    {
-      category: "Carta Digital & Delivery",
-      rows: [
-        {
-          feature: "Carta Digital con Identidad y Subdominio Propio",
+          feature: "Carta Digital QR con Identidad y Subdominio Propio",
           starter: true,
           pro: true,
           enterprise: true,
@@ -326,22 +339,29 @@ export default function PricingSection({ isPreciosPage = false }) {
           type: "text",
         },
         {
-          feature: "Recepción Directa y Confirmación a WhatsApp",
+          feature: "Recepción Directa de Pedidos en WhatsApp",
           starter: true,
           pro: true,
           enterprise: true,
           type: "boolean",
         },
         {
-          feature: "Rastreo de Pedido en Vivo para el Cliente",
-          starter: true,
+          feature: "Fila de Delivery en Vivo Integrada al Monitor de Cocina",
+          starter: false,
           pro: true,
           enterprise: true,
           type: "boolean",
         },
         {
-          feature: "Ticket para Cadete con Cálculo de Vuelto",
-          starter: true,
+          feature: "Ticket de Hoja de Ruta para Cadete con Cálculo de Vuelto",
+          starter: false,
+          pro: true,
+          enterprise: true,
+          type: "boolean",
+        },
+        {
+          feature: "Rastreo de Estado del Pedido en Vivo para el Cliente",
+          starter: false,
           pro: true,
           enterprise: true,
           type: "boolean",
@@ -349,17 +369,17 @@ export default function PricingSection({ isPreciosPage = false }) {
       ],
     },
     {
-      category: "Soporte & Onboarding",
+      category: "Soporte y Puesta en Marcha",
       rows: [
         {
-          feature: "Carga y Migración de Menú Actual",
-          starter: "Gratuita",
+          feature: "Carga y Migración Inicial de tu Menú",
+          starter: "Bonificada",
           pro: "Prioritaria Asistida",
-          enterprise: "VIP Sub-30 min",
+          enterprise: "VIP en menos de 30 min",
           type: "text",
         },
         {
-          feature: "Guía de Capacitación para Personal",
+          feature: "Capacitación Operativa para tu Equipo",
           starter: true,
           pro: true,
           enterprise: true,
@@ -367,9 +387,9 @@ export default function PricingSection({ isPreciosPage = false }) {
         },
         {
           feature: "Nivel de Soporte Técnico",
-          starter: "Estándar por WhatsApp",
-          pro: "Prioritario en Horario Pico",
-          enterprise: "VIP Dedicado 24/7",
+          starter: "Estándar en horario comercial",
+          pro: "Prioritario en horario pico",
+          enterprise: "Dedicado 24/7 todo el año",
           type: "text",
         },
       ],
@@ -420,30 +440,34 @@ export default function PricingSection({ isPreciosPage = false }) {
           </div>
         </div>
 
-        {/* Switcher Toggle (Lifetime Deal vs Mensual) */}
+        {/* Switcher Toggle */}
         <div className="flex flex-col items-center justify-center mb-14 space-y-3">
-          <div className="p-1.5 rounded-2xl bg-zinc-200/80 border border-zinc-300/80 flex items-center gap-1">
+          <div className="p-1.5 rounded-2xl bg-zinc-200/80 border border-zinc-300/80 flex flex-wrap items-center justify-center gap-1">
             <button
               type="button"
-              onClick={() => setBillingType("ltd")}
-              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
-                billingType === "ltd"
+              onClick={() => setBillingType("annual")}
+              className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
+                billingType === "annual"
                   ? "bg-[#e85d45] text-white shadow-md shadow-[#e85d45]/25"
                   : "text-zinc-700 hover:text-zinc-950"
               }`}
             >
-              <span>Pago Único de por Vida</span>
-              <span className={`text-[10px] uppercase tracking-wider px-1.5 py-0.2 rounded-md font-extrabold ${
-                billingType === "ltd" ? "bg-white/20 text-white" : "bg-zinc-300 text-zinc-800"
-              }`}>
-                Founder
+              <span>Abono Anual</span>
+              <span
+                className={`text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded-md font-extrabold ${
+                  billingType === "annual"
+                    ? "bg-white/20 text-white"
+                    : "bg-[#e85d45]/15 text-[#e85d45]"
+                }`}
+              >
+                2 Meses de Regalo
               </span>
             </button>
 
             <button
               type="button"
               onClick={() => setBillingType("monthly")}
-              className={`px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
+              className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer ${
                 billingType === "monthly"
                   ? "bg-zinc-900 text-white shadow-md shadow-zinc-950/20"
                   : "text-zinc-700 hover:text-zinc-950"
@@ -451,19 +475,48 @@ export default function PricingSection({ isPreciosPage = false }) {
             >
               <span>Abono Mensual</span>
             </button>
+
+            <button
+              type="button"
+              onClick={() => setBillingType("ltd")}
+              className={`px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-200 cursor-pointer flex items-center gap-2 ${
+                billingType === "ltd"
+                  ? "bg-zinc-900 text-white shadow-md shadow-zinc-950/20"
+                  : "text-zinc-700 hover:text-zinc-950"
+              }`}
+            >
+              <span>Pago Único</span>
+              <span
+                className={`text-[10px] uppercase tracking-wider px-1.5 py-0.5 rounded-md font-extrabold ${
+                  billingType === "ltd"
+                    ? "bg-[#e85d45] text-white"
+                    : "bg-zinc-300 text-zinc-800"
+                }`}
+              >
+                Founder
+              </span>
+            </button>
           </div>
 
-          <p className="text-xs text-zinc-500 font-light text-center">
-            {billingType === "ltd"
-              ? "Edición Founder: Abonás una sola vez para tu local físico y no volvés a pagar cuotas mensuales."
-              : "Suscripción mensual fija en pesos argentinos sin contratos de permanencia. Cancelás cuando quieras."}
+          <p className="text-xs text-zinc-500 font-light text-center max-w-xl">
+            {billingType === "annual" &&
+              "Contratás por un año, te regalamos 2 meses y congelás tu tarifa frente a la inflación."}
+            {billingType === "monthly" &&
+              "Suscripción mensual en pesos argentinos sin contratos de permanencia. Cancelás cuando quieras."}
+            {billingType === "ltd" &&
+              "Edición Founder con cupos limitados: abonás una única vez para tu local físico y no volvés a pagar cuotas."}
           </p>
         </div>
 
-        {/* Pricing Cards Grid (Cleanly aligned, equal heights) */}
+        {/* Pricing Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto mb-16">
-          {plans.map((plan, idx) => {
-            const pricing = billingType === "ltd" ? plan.ltd : plan.monthly;
+          {plans.map((plan) => {
+            const pricing =
+              billingType === "ltd"
+                ? plan.ltd
+                : billingType === "annual"
+                ? plan.annual
+                : plan.monthly;
             const waLink = getWhatsAppLink(plan.whatsappMessage);
 
             return (
@@ -489,7 +542,7 @@ export default function PricingSection({ isPreciosPage = false }) {
                     )}
                   </div>
 
-                  {/* Header Titles (Fixed vertical cadence) */}
+                  {/* Header Titles */}
                   <div className="mb-4">
                     <h3 className="font-serif text-2xl font-bold text-zinc-900 mb-1">
                       {plan.name}
@@ -504,6 +557,17 @@ export default function PricingSection({ isPreciosPage = false }) {
 
                   {/* Price in ARS */}
                   <div className="mb-5 pb-4 border-b border-zinc-100">
+                    {billingType === "annual" && pricing.oldPrice && (
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs text-zinc-400 line-through font-mono">
+                          {pricing.oldPrice}/mes
+                        </span>
+                        <span className="text-[11px] font-semibold text-[#e85d45]">
+                          2 meses de regalo
+                        </span>
+                      </div>
+                    )}
+
                     <div className="flex items-baseline gap-1.5">
                       <span className="font-serif text-4xl sm:text-5xl font-extrabold text-zinc-950 tabular-nums">
                         {pricing.price}
@@ -522,16 +586,16 @@ export default function PricingSection({ isPreciosPage = false }) {
                     </p>
 
                     {billingType === "ltd" && (
-                      <p className="mt-1 text-[11px] font-semibold text-[#e85d45]">
+                      <p className="mt-1.5 text-[11px] font-semibold text-[#e85d45]">
                         {plan.ltd.spots}
                       </p>
                     )}
                   </div>
 
-                  {/* Operational Limits (Clean key-value format without box clutter) */}
+                  {/* Operational Limits */}
                   <div className="mb-6 space-y-2 text-xs text-zinc-700 py-3 border-y border-zinc-100">
                     <div className="flex items-center justify-between">
-                      <span className="text-zinc-500 font-light">Capacidad de Salón:</span>
+                      <span className="text-zinc-500 font-light">Capacidad Operativa:</span>
                       <span className="font-semibold text-zinc-900">{plan.limits.tables}</span>
                     </div>
                     <div className="flex items-center justify-between">
@@ -556,7 +620,7 @@ export default function PricingSection({ isPreciosPage = false }) {
                   </div>
                 </div>
 
-                {/* Card Action Button (Links to Contact / WhatsApp) */}
+                {/* Card Action Button */}
                 <div className="pt-2">
                   <a
                     href={waLink}
@@ -587,27 +651,52 @@ export default function PricingSection({ isPreciosPage = false }) {
           </p>
         </div>
 
-        {/* Lifetime Deal Pitch */}
-        {billingType === "ltd" && (
+        {/* Strategic Pitch Box */}
+        {billingType === "annual" && (
           <div className="max-w-4xl mx-auto mb-14 p-7 sm:p-8 rounded-3xl bg-white border border-zinc-200/90 shadow-sm">
             <h3 className="font-serif text-2xl font-bold text-zinc-900 mb-2">
-              ¿Por qué un pago único de por vida?
+              Contratás por un año y te regalamos 2 meses
             </h3>
             <p className="text-sm text-zinc-600 leading-relaxed font-light mb-5">
-              Los sistemas tradicionales te cobran entre $40.000 y $80.000 todos los meses y aumentan constantemente por inflación. Con Roosty pagás una sola vez: en ~7 meses ya recuperaste la inversión y te olvidás de costos fijos mensuales para siempre.
+              Los softwares tradicionales ajustan su cuota todos los meses. Con el Abono Anual de Roosty congelás el valor en pesos por todo el año, recibís 2 meses bonificados y operás los 365 días sin sorpresas en tu estructura de costos.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-medium text-zinc-700 pt-4 border-t border-zinc-100">
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-[#e85d45] shrink-0" />
-                <span>1 Licencia por local físico</span>
+                <span>2 meses de regalo incluidos</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-[#e85d45] shrink-0" />
-                <span>Todas las updates incluidas</span>
+                <span>Precio congelado por 12 meses</span>
               </div>
               <div className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-[#e85d45] shrink-0" />
-                <span>0% de comisiones por venta</span>
+                <span>Soporte y migración prioritaria</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {billingType === "ltd" && (
+          <div className="max-w-4xl mx-auto mb-14 p-7 sm:p-8 rounded-3xl bg-white border border-zinc-200/90 shadow-sm">
+            <h3 className="font-serif text-2xl font-bold text-zinc-900 mb-2">
+              Licencia Founder de por vida
+            </h3>
+            <p className="text-sm text-zinc-600 leading-relaxed font-light mb-5">
+              Para un grupo reducido de locales fundadores habilitamos la adquisición perpetua del software mediante un pago único. Una vez completados los 5 cupos de esta etapa, el sistema se comercializará exclusivamente bajo modalidad de suscripción mensual o anual.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-medium text-zinc-700 pt-4 border-t border-zinc-100">
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-[#e85d45] shrink-0" />
+                <span>1 Licencia perpetua por local físico</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-[#e85d45] shrink-0" />
+                <span>Todas las actualizaciones incluidas</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Check className="w-4 h-4 text-[#e85d45] shrink-0" />
+                <span>Edición limitada a 5 cupos por plan</span>
               </div>
             </div>
           </div>
@@ -620,7 +709,7 @@ export default function PricingSection({ isPreciosPage = false }) {
             onClick={() => setShowMatrix(!showMatrix)}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-zinc-300 hover:border-zinc-400 text-zinc-800 font-semibold text-sm shadow-xs transition-all hover:bg-zinc-50 cursor-pointer"
           >
-            <span>{showMatrix ? "Ocultar matriz comparativa completa" : "Ver matriz comparativa detallada (25 características)"}</span>
+            <span>{showMatrix ? "Ocultar matriz comparativa completa" : "Ver matriz comparativa detallada de 25 características"}</span>
             {showMatrix ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
         </div>
@@ -738,7 +827,7 @@ export default function PricingSection({ isPreciosPage = false }) {
         {/* Reassurance Footer */}
         <div className="text-center text-xs text-zinc-500 flex items-center justify-center gap-2">
           <ShieldCheck className="w-4 h-4 text-[#e85d45]" />
-          <span>Precios en pesos argentinos (ARS). 0% de comisiones por pedidos en el Menú QR. 14 días de prueba gratis.</span>
+          <span>Precios expresados en pesos argentinos. 0% de comisiones por pedidos en el Menú QR. 14 días de prueba gratis.</span>
         </div>
 
       </div>

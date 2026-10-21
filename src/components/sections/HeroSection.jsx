@@ -47,7 +47,7 @@ export default function HeroSection() {
             
             {/* Eyebrow Chip */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-xs border border-zinc-200/90 text-xs font-semibold text-zinc-800 mb-6 sm:mb-7 shadow-2xs">
-              <span className="tracking-wide">Sistema Operativo Gastronómico <span className="text-[#e85d45] font-bold">100% Web</span></span>
+              <span className="tracking-wide"><strong className="font-bold text-zinc-950">Roosty POS</strong> • Sistema Operativo Gastronómico <span className="text-[#e85d45] font-bold">100% Web</span></span>
             </div>
 
             {/* Main Title with text-balance */}
@@ -73,7 +73,7 @@ export default function HeroSection() {
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg lg:text-[1.125rem] text-zinc-600 font-light leading-relaxed mb-10 sm:mb-11 max-w-3xl text-balance">
-              El software para bares, cervecerías, cafeterías y restaurantes que vuela en horas pico. Comandas en 1 toque, carta digital propia y arqueo ciego exacto.
+              <strong className="font-semibold text-zinc-800">Roosty POS</strong> es el software de punto de venta para bares, cervecerías, cafeterías y restaurantes que vuela en horas pico. Comandas en 1 toque, carta digital QR sin comisiones y arqueo ciego exacto.
             </p>
 
             {/* CTAs: Primary (Button-in-Button Nested Architecture) + Secondary (Assisted Sales via WhatsApp) */}

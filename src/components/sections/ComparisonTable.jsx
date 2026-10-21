@@ -74,11 +74,12 @@ export default function ComparisonTable() {
                   </th>
                   <th className="py-5 px-6 text-sm font-bold text-[#e85d45] w-1/3 bg-[#fff2ef]/50 border-x border-[#e85d45]/20">
                     <div className="flex items-center gap-2">
-                      <div className="relative h-6 w-24">
+                      <div className="relative h-7 w-24">
                         <Image
-                          src="/roosty2.png"
+                          src="/roostylogoname.png"
                           alt="Roosty POS"
                           fill
+                          sizes="96px"
                           className="object-contain object-left"
                         />
                       </div>

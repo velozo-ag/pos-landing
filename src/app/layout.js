@@ -17,53 +17,64 @@ const inter = Inter({
 
 export const metadata = {
   metadataBase: new URL("https://roosty.site"),
+  applicationName: "Roosty POS",
   title: {
     template: "%s | Roosty POS",
     default: "Roosty POS — Sistema de Punto de Venta Gastronómico y Menú QR",
   },
   description:
-    "Roosty POS es el software gastronómico y sistema de punto de venta líder. Acelerá tus ventas con Menú QR, pedidos online sin comisiones, KDS para cocina y arqueo de caja. Ideal para restaurantes, bares y cafeterías.",
+    "Roosty POS es el software gastronómico y sistema de punto de venta 100% web líder en Argentina. Acelerá tus ventas con Menú QR, pedidos a WhatsApp con 0% comisiones, KDS de cocina y arqueo ciego de caja para restaurantes, bares y cafeterías.",
   keywords: [
+    "Roosty POS",
+    "Roosty",
     "POS gastronómico",
     "sistema para restaurantes",
     "software de gestión gastronómica",
     "menú QR",
     "carta digital QR",
-    "pedidos online",
-    "punto de venta restaurantes",
-    "software para bares",
+    "pedidos online por WhatsApp",
+    "punto de venta restaurantes Argentina",
+    "software para bares y cervecerías",
     "KDS cocina",
     "comanda digital",
-    "cierre de caja",
+    "arqueo de caja",
     "delivery y takeaway sin comisiones",
   ],
-  authors: [{ name: "Roosty POS" }],
+  authors: [{ name: "Roosty POS", url: "https://roosty.site" }],
   creator: "Roosty POS",
+  publisher: "Roosty POS",
+  alternates: {
+    canonical: "https://roosty.site",
+  },
   icons: {
     icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon.png" },
-      { url: "/roosty-icon.png", sizes: "32x32", type: "image/png" },
-      { url: "/roosty-icon.png", sizes: "192x192", type: "image/png" },
-      { url: "/roosty-icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/roostyicon.png", type: "image/png", sizes: "64x64" },
+      { url: "/roostylogo.png", type: "image/png", sizes: "300x186" },
     ],
-    shortcut: "/favicon.ico",
+    shortcut: ["/roostyicon.png"],
     apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/roostyicon.png", sizes: "180x180", type: "image/png" },
     ],
   },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     title: "Roosty POS — Sistema Gastronómico y Menú QR",
     description:
-      "Vender rápido. Cerrar caja tranquilo. Software gastronómico diseñado para operar a máxima velocidad en horas pico con Menú QR y Pedidos Online.",
+      "Atendé más rápido, cobrá al instante y controlá tu caja. Software gastronómico 100% web con Menú QR, pedidos a WhatsApp sin comisiones y KDS en vivo.",
     url: "https://roosty.site",
     siteName: "Roosty POS",
     images: [
       {
-        url: "/roosty2.png",
-        width: 1200,
-        height: 630,
-        alt: "Roosty POS — Software Gastronómico y Menú QR",
+        url: "/roostylogoname.png",
+        width: 595,
+        height: 215,
+        alt: "Roosty POS — Logo Oficial",
+      },
+      {
+        url: "/roostylogo.png",
+        width: 300,
+        height: 186,
+        alt: "Roosty POS — Isotipo Oficial",
       },
     ],
     type: "website",
@@ -73,8 +84,8 @@ export const metadata = {
     card: "summary_large_image",
     title: "Roosty POS — Sistema Gastronómico y Menú QR",
     description:
-      "Sistema gastronómico con Menú QR, pedidos online y KDS para cocina. Vender rápido, cerrar caja tranquilo.",
-    images: ["/roosty2.png"],
+      "Sistema gastronómico 100% web con Menú QR, pedidos a WhatsApp sin comisiones, KDS para cocina y arqueo ciego de caja.",
+    images: ["/roostylogoname.png"],
   },
   robots: {
     index: true,
@@ -94,20 +105,109 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
+        "@type": "WebSite",
+        "@id": "https://roosty.site/#website",
         "name": "Roosty POS",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "WebBrowser",
-        "description":
-          "Sistema de Punto de Venta (POS) Gastronómico con Menú QR, pedidos online, KDS y control de caja.",
+        "alternateName": [
+          "Roosty",
+          "Roosty Sistema Gastronómico",
+          "Roosty Punto de Venta",
+        ],
         "url": "https://roosty.site",
-        "image": "https://roosty.site/roosty2.png",
+        "inLanguage": "es-AR",
+        "publisher": {
+          "@id": "https://roosty.site/#organization",
+        },
       },
       {
         "@type": "Organization",
+        "@id": "https://roosty.site/#organization",
         "name": "Roosty POS",
+        "legalName": "Roosty POS",
+        "alternateName": "Roosty",
         "url": "https://roosty.site",
-        "logo": "https://roosty.site/roosty2.png",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://roosty.site/#logo",
+          "url": "https://roosty.site/roostylogo.png",
+          "contentUrl": "https://roosty.site/roostylogo.png",
+          "width": 300,
+          "height": 186,
+          "caption": "Roosty POS",
+        },
+        "image": "https://roosty.site/roostylogo.png",
+        "description":
+          "Desarrolladores de Roosty POS, el sistema de punto de venta (POS) y software de gestión gastronómica 100% web en la nube para restaurantes, bares, cervecerías y cafeterías en Argentina.",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+54-9-3482-626653",
+            "contactType": "sales",
+            "areaServed": "AR",
+            "availableLanguage": ["Spanish"],
+          },
+        ],
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://roosty.site/#software",
+        "name": "Roosty POS",
+        "applicationCategory": "BusinessApplication",
+        "applicationSubCategory":
+          "Restaurant Point of Sale (POS) & Management Software",
+        "operatingSystem": "Web, Cloud SaaS, Windows, macOS, Android, iOS",
+        "description":
+          "Sistema de Punto de Venta (POS) Gastronómico 100% web con mapa de mesas en vivo, Menú Digital QR con subdominio propio y 0% comisiones por pedido a WhatsApp, pantalla KDS para cocina, impresión térmica universal (80mm y 58mm) y arqueo ciego de caja.",
+        "url": "https://roosty.site",
+        "image": "https://roosty.site/roostylogo.png",
+        "screenshot": "https://roosty.site/examples/banner_composed.jpg",
+        "publisher": {
+          "@id": "https://roosty.site/#organization",
+        },
+        "featureList": [
+          "Mapa de salón y sectores dinámicos con cronómetro de ocupación en vivo",
+          "Terminal de comandas rápida con atajos de teclado (M, T, F8, F9)",
+          "Menú Digital QR con subdominio propio y pedidos a WhatsApp con 0% de comisiones",
+          "Pantalla KDS interactiva para cocina y barra con semáforo de demoras",
+          "Impresión de tickets térmicos universales de 80mm y 58mm sin servidores locales",
+          "Arqueo ciego de caja, fondo inicial obligatorio, libro diario y exportación a Excel",
+        ],
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "ARS",
+          "lowPrice": "25000",
+          "highPrice": "1290000",
+          "offerCount": "3",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Plan Starter Takeaway Anual",
+              "price": "25000",
+              "priceCurrency": "ARS",
+              "description":
+                "Ideal para mostrador, cafeterías al paso y delivery. $25.000/mes contratando el año con 2 meses de regalo o $30.000/mes mensual.",
+              "url": "https://roosty.site/precios",
+            },
+            {
+              "@type": "Offer",
+              "name": "Plan Pro Salón Anual",
+              "price": "45800",
+              "priceCurrency": "ARS",
+              "description":
+                "Control total de salón hasta 30 mesas, KDS y comandas. $45.800/mes contratando el año con 2 meses de regalo o $55.000/mes mensual.",
+              "url": "https://roosty.site/precios",
+            },
+            {
+              "@type": "Offer",
+              "name": "Plan Business Enterprise Anual",
+              "price": "79100",
+              "priceCurrency": "ARS",
+              "description":
+                "Mesas y usuarios ilimitados con soporte VIP 24/7. $79.100/mes contratando el año con 2 meses de regalo o $95.000/mes mensual.",
+              "url": "https://roosty.site/precios",
+            },
+          ],
+        },
       },
     ],
   };

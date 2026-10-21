@@ -9,6 +9,18 @@ const nextConfig = {
     "localhost:3000",
     "127.0.0.1:3000",
   ],
+  async rewrites() {
+    return [
+      {
+        source: "/favicon.ico",
+        destination: "/roostyicon.png",
+      },
+      {
+        source: "/roosty-icon.png",
+        destination: "/roostyicon.png",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

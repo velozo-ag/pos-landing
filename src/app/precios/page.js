@@ -6,30 +6,32 @@ import { MessageCircle, ArrowRight } from "lucide-react";
 import { SITE_CONFIG } from "@/config/site";
 
 export const metadata = {
-  title: "Planes y Precios",
+  title: "Planes y Precios — Abono Anual, Mensual y Licencia Founder",
   description:
-    "Precios claros en pesos argentinos (ARS) de Roosty POS: Starter Takeaway, Pro Salón y Business Enterprise. Modalidad mensual o Lifetime Deal (pago único de por vida).",
+    "Precios claros en pesos argentinos de Roosty POS: Starter Takeaway, Pro Salón y Business Enterprise. Contratá por un año con 2 meses de regalo, elegí abono mensual o consultá por cupos Founder de por vida.",
   alternates: {
     canonical: "https://roosty.site/precios",
   },
   openGraph: {
     title: "Planes y Precios | Roosty POS",
-    description: "Inversión fija mensual o pago único de por vida para restaurantes, bares y cafeterías.",
+    description:
+      "Abono anual con 2 meses de regalo, suscripción mensual o Licencia Founder para restaurantes, bares y cafeterías.",
     url: "https://roosty.site/precios",
     images: [
       {
-        url: "/roosty2.png",
-        width: 1200,
-        height: 630,
+        url: "/roostylogo.png",
+        width: 300,
+        height: 186,
         alt: "Roosty POS Planes y Precios",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Planes y Precios | Roosty POS",
-    description: "Inversión fija mensual o pago único de por vida para restaurantes, bares y cafeterías.",
-    images: ["/roosty2.png"],
+    description:
+      "Abono anual con 2 meses de regalo, suscripción mensual o Licencia Founder para restaurantes, bares y cafeterías.",
+    images: ["/roostylogo.png"],
   },
 };
 

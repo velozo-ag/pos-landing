@@ -356,13 +356,14 @@ export default function DemoWizardScreen() {
           {/* Header Superior Izquierdo */}
           <div className="relative z-10 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="relative h-7 w-28 transition-transform duration-200 group-hover:opacity-85">
+              <div className="relative h-8 w-28 transition-transform duration-200 group-hover:scale-[1.02]">
                 <Image
-                  src="/roosty2.png"
+                  src="/roostylogoname.png"
                   alt="Roosty POS"
                   fill
+                  sizes="112px"
                   priority
-                  className="object-contain object-left invert opacity-90"
+                  className="object-contain object-left"
                 />
               </div>
             </Link>
@@ -483,9 +484,9 @@ export default function DemoWizardScreen() {
           {/* Footer Inferior Izquierdo */}
           <div className="relative z-10 text-xs text-zinc-500 flex items-center justify-between pt-2 border-t border-zinc-800/60">
             <span className="text-[11px]">14 días de prueba gratis</span>
-            <div className="flex items-center gap-2 opacity-80">
-              <div className="relative h-3.5 w-14">
-                <Image src="/roosty2.png" alt="Roosty" fill className="object-contain invert opacity-75" />
+            <div className="flex items-center gap-2 opacity-90">
+              <div className="relative h-4 w-16">
+                <Image src="/roostylogoname.png" alt="Roosty" fill sizes="64px" className="object-contain" />
               </div>
               <span className="font-mono text-[9px] text-zinc-400">v2.4</span>
             </div>
