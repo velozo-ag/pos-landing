@@ -5,13 +5,13 @@ export const metadata = {
   description:
     'Creá tu cuenta demo gratis de Roosty POS por 14 días sin tarjeta de crédito. Probá el mapa de mesas, el Menú QR con tu marca, el KDS de cocina y el arqueo de caja en vivo.',
   alternates: {
-    canonical: 'https://roosty.site/demo',
+    canonical: 'https://pos.roosty.com.ar/demo',
   },
   openGraph: {
     title: 'Crear Demo Gratis | Roosty POS',
     description:
       'Comenzá a usar el sistema operativo para tu local gastronómico en 2 minutos sin instalación.',
-    url: 'https://roosty.site/demo',
+    url: 'https://pos.roosty.com.ar/demo',
     images: [
       {
         url: '/roostylogo.png',

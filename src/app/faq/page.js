@@ -9,12 +9,12 @@ export const metadata = {
   description:
     "Respondemos todas las dudas sobre Roosty POS: qué es Roosty POS, compatibilidad con impresoras térmicas de 80mm y 58mm, menús QR sin comisiones, cocina KDS, arqueo ciego de caja y planes.",
   alternates: {
-    canonical: "https://roosty.site/faq",
+    canonical: "https://pos.roosty.com.ar/faq",
   },
   openGraph: {
     title: "Preguntas Frecuentes | Roosty POS",
     description: "Centro de ayuda y dudas frecuentes sobre el software gastronómico Roosty POS.",
-    url: "https://roosty.site/faq",
+    url: "https://pos.roosty.com.ar/faq",
     images: [
       {
         url: "/roostylogo.png",

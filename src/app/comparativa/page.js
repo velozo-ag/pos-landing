@@ -10,12 +10,12 @@ export const metadata = {
   description:
     "Compará Roosty POS frente a los sistemas gastronómicos tradicionales: 100% web en la nube, cero hardware propietario, velocidad de salón, menú QR con 0% de comisiones y arqueo ciego.",
   alternates: {
-    canonical: "https://roosty.site/comparativa",
+    canonical: "https://pos.roosty.com.ar/comparativa",
   },
   openGraph: {
     title: "Comparativa | Roosty POS vs Sistemas Tradicionales",
     description: "Comparativa frente a sistemas obsoletos con servidores locales y hardware propietario.",
-    url: "https://roosty.site/comparativa",
+    url: "https://pos.roosty.com.ar/comparativa",
     images: [
       {
         url: "/roostylogo.png",

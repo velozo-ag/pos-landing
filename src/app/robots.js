@@ -21,7 +21,7 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://roosty.site/sitemap.xml",
-    host: "https://roosty.site",
+    sitemap: "https://pos.roosty.com.ar/sitemap.xml",
+    host: "https://pos.roosty.com.ar",
   };
 }

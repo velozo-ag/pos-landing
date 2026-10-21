@@ -7,13 +7,13 @@ export const metadata = {
   description:
     "Conocé todos los módulos de Roosty POS: Mapa de salón con cronómetros en vivo, Menú Digital QR con 0% comisiones por WhatsApp, Pantalla KDS de cocina e impresión térmica, y Arqueo Ciego de Caja.",
   alternates: {
-    canonical: "https://roosty.site/funcionalidades",
+    canonical: "https://pos.roosty.com.ar/funcionalidades",
   },
   openGraph: {
     title: "Módulos y Funcionalidades | Roosty POS",
     description:
       "Recorré el sistema gastronómico sección por sección: Salón y Mesas, Carta Digital QR, Cocina KDS y Control Financiero.",
-    url: "https://roosty.site/funcionalidades",
+    url: "https://pos.roosty.com.ar/funcionalidades",
     images: [
       {
         url: "/roostylogo.png",

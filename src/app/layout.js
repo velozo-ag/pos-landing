@@ -16,7 +16,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://roosty.site"),
+  metadataBase: new URL("https://pos.roosty.com.ar"),
   applicationName: "Roosty POS",
   title: {
     template: "%s | Roosty POS",
@@ -40,11 +40,11 @@ export const metadata = {
     "arqueo de caja",
     "delivery y takeaway sin comisiones",
   ],
-  authors: [{ name: "Roosty POS", url: "https://roosty.site" }],
+  authors: [{ name: "Roosty POS", url: "https://pos.roosty.com.ar" }],
   creator: "Roosty POS",
   publisher: "Roosty POS",
   alternates: {
-    canonical: "https://roosty.site",
+    canonical: "https://pos.roosty.com.ar",
   },
   icons: {
     icon: [
@@ -61,7 +61,7 @@ export const metadata = {
     title: "Roosty POS — Sistema Gastronómico y Menú QR",
     description:
       "Atendé más rápido, cobrá al instante y controlá tu caja. Software gastronómico 100% web con Menú QR, pedidos a WhatsApp sin comisiones y KDS en vivo.",
-    url: "https://roosty.site",
+    url: "https://pos.roosty.com.ar",
     siteName: "Roosty POS",
     images: [
       {
@@ -106,36 +106,36 @@ export default function RootLayout({ children }) {
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://roosty.site/#website",
+        "@id": "https://pos.roosty.com.ar/#website",
         "name": "Roosty POS",
         "alternateName": [
           "Roosty",
           "Roosty Sistema Gastronómico",
           "Roosty Punto de Venta",
         ],
-        "url": "https://roosty.site",
+        "url": "https://pos.roosty.com.ar",
         "inLanguage": "es-AR",
         "publisher": {
-          "@id": "https://roosty.site/#organization",
+          "@id": "https://pos.roosty.com.ar/#organization",
         },
       },
       {
         "@type": "Organization",
-        "@id": "https://roosty.site/#organization",
+        "@id": "https://pos.roosty.com.ar/#organization",
         "name": "Roosty POS",
         "legalName": "Roosty POS",
         "alternateName": "Roosty",
-        "url": "https://roosty.site",
+        "url": "https://pos.roosty.com.ar",
         "logo": {
           "@type": "ImageObject",
-          "@id": "https://roosty.site/#logo",
-          "url": "https://roosty.site/roostylogo.png",
-          "contentUrl": "https://roosty.site/roostylogo.png",
+          "@id": "https://pos.roosty.com.ar/#logo",
+          "url": "https://pos.roosty.com.ar/roostylogo.png",
+          "contentUrl": "https://pos.roosty.com.ar/roostylogo.png",
           "width": 300,
           "height": 186,
           "caption": "Roosty POS",
         },
-        "image": "https://roosty.site/roostylogo.png",
+        "image": "https://pos.roosty.com.ar/roostylogo.png",
         "description":
           "Desarrolladores de Roosty POS, el sistema de punto de venta (POS) y software de gestión gastronómica 100% web en la nube para restaurantes, bares, cervecerías y cafeterías en Argentina.",
         "contactPoint": [
@@ -150,7 +150,7 @@ export default function RootLayout({ children }) {
       },
       {
         "@type": "SoftwareApplication",
-        "@id": "https://roosty.site/#software",
+        "@id": "https://pos.roosty.com.ar/#software",
         "name": "Roosty POS",
         "applicationCategory": "BusinessApplication",
         "applicationSubCategory":
@@ -158,11 +158,11 @@ export default function RootLayout({ children }) {
         "operatingSystem": "Web, Cloud SaaS, Windows, macOS, Android, iOS",
         "description":
           "Sistema de Punto de Venta (POS) Gastronómico 100% web con mapa de mesas en vivo, Menú Digital QR con subdominio propio y 0% comisiones por pedido a WhatsApp, pantalla KDS para cocina, impresión térmica universal (80mm y 58mm) y arqueo ciego de caja.",
-        "url": "https://roosty.site",
-        "image": "https://roosty.site/roostylogo.png",
-        "screenshot": "https://roosty.site/examples/banner_composed.jpg",
+        "url": "https://pos.roosty.com.ar",
+        "image": "https://pos.roosty.com.ar/roostylogo.png",
+        "screenshot": "https://pos.roosty.com.ar/examples/banner_composed.jpg",
         "publisher": {
-          "@id": "https://roosty.site/#organization",
+          "@id": "https://pos.roosty.com.ar/#organization",
         },
         "featureList": [
           "Mapa de salón y sectores dinámicos con cronómetro de ocupación en vivo",
@@ -186,7 +186,7 @@ export default function RootLayout({ children }) {
               "priceCurrency": "ARS",
               "description":
                 "Ideal para mostrador, cafeterías al paso y delivery. $25.000/mes contratando el año con 2 meses de regalo o $30.000/mes mensual.",
-              "url": "https://roosty.site/precios",
+              "url": "https://pos.roosty.com.ar/precios",
             },
             {
               "@type": "Offer",
@@ -195,7 +195,7 @@ export default function RootLayout({ children }) {
               "priceCurrency": "ARS",
               "description":
                 "Control total de salón hasta 30 mesas, KDS y comandas. $45.800/mes contratando el año con 2 meses de regalo o $55.000/mes mensual.",
-              "url": "https://roosty.site/precios",
+              "url": "https://pos.roosty.com.ar/precios",
             },
             {
               "@type": "Offer",
@@ -204,7 +204,7 @@ export default function RootLayout({ children }) {
               "priceCurrency": "ARS",
               "description":
                 "Mesas y usuarios ilimitados con soporte VIP 24/7. $79.100/mes contratando el año con 2 meses de regalo o $95.000/mes mensual.",
-              "url": "https://roosty.site/precios",
+              "url": "https://pos.roosty.com.ar/precios",
             },
           ],
         },

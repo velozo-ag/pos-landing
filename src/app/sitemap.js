@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = "https://roosty.site";
+  const baseUrl = "https://pos.roosty.com.ar";
   const lastModified = new Date();
 
   return [

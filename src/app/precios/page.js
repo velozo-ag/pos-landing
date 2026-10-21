@@ -10,13 +10,13 @@ export const metadata = {
   description:
     "Precios claros en pesos argentinos de Roosty POS: Starter Takeaway, Pro Salón y Business Enterprise. Contratá por un año con 2 meses de regalo, elegí abono mensual o consultá por cupos Founder de por vida.",
   alternates: {
-    canonical: "https://roosty.site/precios",
+    canonical: "https://pos.roosty.com.ar/precios",
   },
   openGraph: {
     title: "Planes y Precios | Roosty POS",
     description:
       "Abono anual con 2 meses de regalo, suscripción mensual o Licencia Founder para restaurantes, bares y cafeterías.",
-    url: "https://roosty.site/precios",
+    url: "https://pos.roosty.com.ar/precios",
     images: [
       {
         url: "/roostylogo.png",
