@@ -4,7 +4,7 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/catalog-cards"],
       },
       {
         userAgent: [
@@ -19,6 +19,7 @@ export default function robots() {
           "anthropic-ai",
         ],
         allow: "/",
+        disallow: ["/api/", "/catalog-cards"],
       },
     ],
     sitemap: "https://pos.roosty.com.ar/sitemap.xml",

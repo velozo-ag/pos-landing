@@ -1,23 +1,24 @@
-# Roosty POS — Sistema de Punto de Venta (POS) y Gestión Gastronómica
+# Roosty POS — Sistema de Punto de Venta y Gestión Gastronómica
 
-> Roosty POS (https://pos.roosty.com.ar) es un software gastronómico y sistema de punto de venta (POS) 100% web en la nube (Cloud SaaS) diseñado en Argentina para restaurantes, bares, cervecerías, cafeterías, pizzerías y locales de comida rápida (takeaway y delivery).
+> Roosty POS https://pos.roosty.com.ar es un software gastronómico y sistema de punto de venta 100% web en la nube diseñado en Argentina para restaurantes, bares, cervecerías, cafeterías, pizzerías y locales de comida rápida, takeaway y delivery.
 
 ## Identidad de Marca
 - **Nombre oficial:** Roosty POS
 - **Sitio web oficial:** https://pos.roosty.com.ar
 - **Subdominios de clientes y cartas QR:** https://clientenombre.roosty.site
-- **Registro de prueba gratuita (14 días sin tarjeta):** https://pos.roosty.com.ar/demo
-- **Logotipo oficial:** https://pos.roosty.com.ar/roostylogo.png
-- **Logotipo completo horizontal:** https://pos.roosty.com.ar/roostylogoname.png
-- **Icono oficial:** https://pos.roosty.com.ar/roostyicon.png
-- **Contacto de Ventas y Soporte (WhatsApp):** +54 9 3482 626653
+- **Registro de prueba gratuita por 14 días sin tarjeta:** https://pos.roosty.com.ar/demo
+- **Imagen OpenGraph oficial 1200x630:** https://pos.roosty.com.ar/og-roosty-pos.png
+- **Logotipo cuadrado 512x512:** https://pos.roosty.com.ar/icon-512.png
+- **Logotipo completo horizontal 642x244:** https://pos.roosty.com.ar/roostylogoname.png
+- **Icono oficial 192x192:** https://pos.roosty.com.ar/roostyicon.png
+- **Contacto de Ventas y Soporte por WhatsApp:** +54 9 3482 626653
 
 ## Propuesta de Valor Clave
-1. **100% Web en la Nube (Cero Instalaciones):** Funciona desde cualquier navegador en PC, notebook, tablet Android, iPad o celular sin servidores locales ni instalaciones técnicas.
-2. **Menú Digital QR con Subdominio Propio y 0% Comisiones:** Cada local obtiene su propio enlace personalizado (ej. `tunegocio.roosty.site`) con fotos reales, cálculo de adicionales en vivo y envío de pedidos formateados directo a WhatsApp sin pagar comisiones por venta.
-3. **Salón Dinámico de Alta Velocidad:** Mapa visual de mesas por sectores (Salón, Patio, Terraza, Barra, VIP), cronómetros de ocupación en vivo, barra de cuentas activas en paralelo y atajos de teclado (`M` para Spotlight de mesas, `T` para mostrador/takeaway, `F8` para marchar comanda a cocina, `F9` para cobro express).
-4. **Cocina Flexible (KDS Digital o Impresión Térmica):** Soporta pantallas táctiles KDS con semáforos de demora, impresión física en comanderas térmicas universales de 80mm o 58mm (USB, Red o Bluetooth), o modo híbrido.
-5. **Control de Caja y Arqueo Ciego:** Apertura obligatoria con fondo inicial, arqueo ciego para evitar diferencias de caja, libro diario de ingresos/egresos menores y exportación a Excel/CSV.
+1. **100% Web en la Nube sin Instalaciones:** Funciona desde cualquier navegador en PC, notebook, tablet Android, iPad o celular sin servidores locales ni instalaciones técnicas.
+2. **Menú Digital QR con Subdominio Propio y 0% Comisiones:** Cada local obtiene su propio enlace personalizado bajo `tunegocio.roosty.site` con fotos reales, cálculo de adicionales en vivo y envío de pedidos formateados directo a WhatsApp sin pagar comisiones por venta.
+3. **Salón Dinámico de Alta Velocidad:** Mapa visual de mesas por sectores como Salón, Patio, Terraza, Barra y VIP, cronómetros de ocupación en vivo, barra de cuentas activas en paralelo y atajos de teclado `M` para Spotlight de mesas, `T` para mostrador y takeaway, `F8` para marchar comanda a cocina y `F9` para cobro express.
+4. **Cocina Flexible con KDS Digital e Impresión Térmica:** Soporta múltiples pantallas táctiles KDS en vivo para Cocina y Barra con semáforos de demora, impresión física en comanderas térmicas universales de 80mm o 58mm por USB, Red o Bluetooth, o modo híbrido.
+5. **Cuentas de Personal con Roles y Permisos:** Accesos diferenciados para encargados, cajeros y mozos junto a control de caja con arqueo ciego antifraude, apertura obligatoria con fondo inicial, libro diario de ingresos y egresos menores y exportación a Excel.
 
 ## Planes y Precios en Pesos Argentinos
 Roosty POS ofrece 14 días de prueba gratis con carga de menú inicial bonificada y tres modalidades de contratación:

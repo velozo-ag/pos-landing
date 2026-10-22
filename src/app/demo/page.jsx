@@ -14,19 +14,20 @@ export const metadata = {
     url: 'https://pos.roosty.com.ar/demo',
     images: [
       {
-        url: '/roostylogo.png',
-        width: 300,
-        height: 186,
-        alt: 'Roosty POS Crear Demo',
+        url: '/og-roosty-pos.png',
+        width: 1200,
+        height: 630,
+        type: 'image/png',
+        alt: 'Roosty POS Crear Demo Gratis',
       },
     ],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Crear Demo Gratis | Roosty POS',
     description:
       'Comenzá a usar el sistema operativo para tu local gastronómico en 2 minutos sin instalación.',
-    images: ['/roostylogo.png'],
+    images: ['/og-roosty-pos.png'],
   },
 };
 

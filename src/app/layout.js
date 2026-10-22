@@ -48,12 +48,14 @@ export const metadata = {
   },
   icons: {
     icon: [
-      { url: "/roostyicon.png", type: "image/png", sizes: "64x64" },
-      { url: "/roostylogo.png", type: "image/png", sizes: "300x186" },
+      { url: "/icon-48.png", type: "image/png", sizes: "48x48" },
+      { url: "/icon-96.png", type: "image/png", sizes: "96x96" },
+      { url: "/roostyicon.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
     shortcut: ["/roostyicon.png"],
     apple: [
-      { url: "/roostyicon.png", sizes: "180x180", type: "image/png" },
+      { url: "/roostyicon.png", sizes: "192x192", type: "image/png" },
     ],
   },
   manifest: "/manifest.webmanifest",
@@ -65,15 +67,24 @@ export const metadata = {
     siteName: "Roosty POS",
     images: [
       {
+        url: "/og-roosty-pos.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "Roosty POS — Sistema de Punto de Venta Gastronómico y Menú QR",
+      },
+      {
         url: "/roostylogoname.png",
-        width: 595,
-        height: 215,
+        width: 642,
+        height: 244,
+        type: "image/png",
         alt: "Roosty POS — Logo Oficial",
       },
       {
-        url: "/roostylogo.png",
-        width: 300,
-        height: 186,
+        url: "/icon-512.png",
+        width: 512,
+        height: 512,
+        type: "image/png",
         alt: "Roosty POS — Isotipo Oficial",
       },
     ],
@@ -85,7 +96,7 @@ export const metadata = {
     title: "Roosty POS — Sistema Gastronómico y Menú QR",
     description:
       "Sistema gastronómico 100% web con Menú QR, pedidos a WhatsApp sin comisiones, KDS para cocina y arqueo ciego de caja.",
-    images: ["/roostylogoname.png"],
+    images: ["/og-roosty-pos.png"],
   },
   robots: {
     index: true,
@@ -129,15 +140,19 @@ export default function RootLayout({ children }) {
         "logo": {
           "@type": "ImageObject",
           "@id": "https://pos.roosty.com.ar/#logo",
-          "url": "https://pos.roosty.com.ar/roostylogo.png",
-          "contentUrl": "https://pos.roosty.com.ar/roostylogo.png",
-          "width": 300,
-          "height": 186,
+          "url": "https://pos.roosty.com.ar/icon-512.png",
+          "contentUrl": "https://pos.roosty.com.ar/icon-512.png",
+          "width": 512,
+          "height": 512,
           "caption": "Roosty POS",
         },
-        "image": "https://pos.roosty.com.ar/roostylogo.png",
+        "image": [
+          "https://pos.roosty.com.ar/og-roosty-pos.png",
+          "https://pos.roosty.com.ar/roostylogoname.png",
+          "https://pos.roosty.com.ar/icon-512.png",
+        ],
         "description":
-          "Desarrolladores de Roosty POS, el sistema de punto de venta (POS) y software de gestión gastronómica 100% web en la nube para restaurantes, bares, cervecerías y cafeterías en Argentina.",
+          "Desarrolladores de Roosty POS, el sistema de punto de venta y software de gestión gastronómica 100% web en la nube para restaurantes, bares, cervecerías y cafeterías en Argentina.",
         "contactPoint": [
           {
             "@type": "ContactPoint",
@@ -154,23 +169,24 @@ export default function RootLayout({ children }) {
         "name": "Roosty POS",
         "applicationCategory": "BusinessApplication",
         "applicationSubCategory":
-          "Restaurant Point of Sale (POS) & Management Software",
+          "Restaurant Point of Sale & Management Software",
         "operatingSystem": "Web, Cloud SaaS, Windows, macOS, Android, iOS",
         "description":
-          "Sistema de Punto de Venta (POS) Gastronómico 100% web con mapa de mesas en vivo, Menú Digital QR con subdominio propio y 0% comisiones por pedido a WhatsApp, pantalla KDS para cocina, impresión térmica universal (80mm y 58mm) y arqueo ciego de caja.",
+          "Sistema de Punto de Venta Gastronómico 100% web con mapa de mesas en vivo, Menú Digital QR con subdominio propio y 0% comisiones por pedido a WhatsApp, pantalla KDS para cocina y barra, impresión térmica universal de 80mm y 58mm, cuentas de personal con Roles y Permisos y arqueo ciego de caja.",
         "url": "https://pos.roosty.com.ar",
-        "image": "https://pos.roosty.com.ar/roostylogo.png",
+        "image": "https://pos.roosty.com.ar/og-roosty-pos.png",
         "screenshot": "https://pos.roosty.com.ar/examples/banner_composed.jpg",
         "publisher": {
           "@id": "https://pos.roosty.com.ar/#organization",
         },
         "featureList": [
           "Mapa de salón y sectores dinámicos con cronómetro de ocupación en vivo",
-          "Terminal de comandas rápida con atajos de teclado (M, T, F8, F9)",
+          "Terminal de comandas rápida con atajos de teclado M, T, F8 y F9",
           "Menú Digital QR con subdominio propio y pedidos a WhatsApp con 0% de comisiones",
-          "Pantalla KDS interactiva para cocina y barra con semáforo de demoras",
+          "Múltiples pantallas KDS en vivo para Cocina y Barra con semáforo de demoras",
+          "Cuentas de Personal con Roles y Permisos diferenciados para mozos, cajeros y encargados",
           "Impresión de tickets térmicos universales de 80mm y 58mm sin servidores locales",
-          "Arqueo ciego de caja, fondo inicial obligatorio, libro diario y exportación a Excel",
+          "Arqueo ciego de caja antifraude, fondo inicial obligatorio, libro diario y exportación a Excel",
         ],
         "offers": {
           "@type": "AggregateOffer",
@@ -181,33 +197,75 @@ export default function RootLayout({ children }) {
           "offers": [
             {
               "@type": "Offer",
-              "name": "Plan Starter Takeaway Anual",
+              "name": "Plan Starter Takeaway",
               "price": "25000",
               "priceCurrency": "ARS",
               "description":
-                "Ideal para mostrador, cafeterías al paso y delivery. $25.000/mes contratando el año con 2 meses de regalo o $30.000/mes mensual.",
+                "Ideal para mostrador, cafeterías al paso y delivery. $25.000 por mes contratando el año con 2 meses de regalo, $30.000 por mes en abono mensual o $420.000 pago único en Licencia Founder.",
               "url": "https://pos.roosty.com.ar/precios",
             },
             {
               "@type": "Offer",
-              "name": "Plan Pro Salón Anual",
+              "name": "Plan Pro Salón",
               "price": "45800",
               "priceCurrency": "ARS",
               "description":
-                "Control total de salón hasta 30 mesas, KDS y comandas. $45.800/mes contratando el año con 2 meses de regalo o $55.000/mes mensual.",
+                "Control total de salón hasta 30 mesas, KDS interactivo para cocina y barra, y arqueo ciego antifraude. $45.800 por mes contratando el año con 2 meses de regalo, $55.000 por mes en abono mensual o $750.000 pago único en Licencia Founder.",
               "url": "https://pos.roosty.com.ar/precios",
             },
             {
               "@type": "Offer",
-              "name": "Plan Business Enterprise Anual",
+              "name": "Plan Business Enterprise",
               "price": "79100",
               "priceCurrency": "ARS",
               "description":
-                "Mesas y usuarios ilimitados con soporte VIP 24/7. $79.100/mes contratando el año con 2 meses de regalo o $95.000/mes mensual.",
+                "Mesas y usuarios ilimitados con múltiples pantallas KDS en vivo para Cocina y Barra y soporte VIP 24/7. $79.100 por mes contratando el año con 2 meses de regalo, $95.000 por mes en abono mensual o $1.290.000 pago único en Licencia Founder.",
               "url": "https://pos.roosty.com.ar/precios",
             },
           ],
         },
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://pos.roosty.com.ar/#navigation",
+        "name": "Navegación Principal de Roosty POS",
+        "itemListElement": [
+          {
+            "@type": "SiteNavigationElement",
+            "position": 1,
+            "name": "Módulos y Funcionalidades",
+            "description": "Salón y Mesas, Carta Digital QR, Cocina KDS y Caja.",
+            "url": "https://pos.roosty.com.ar/funcionalidades",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 2,
+            "name": "Planes y Precios",
+            "description": "Abono Anual con 2 meses de regalo, Abono Mensual y Licencia Founder.",
+            "url": "https://pos.roosty.com.ar/precios",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 3,
+            "name": "Comparativa",
+            "description": "Roosty POS frente a sistemas gastronómicos tradicionales.",
+            "url": "https://pos.roosty.com.ar/comparativa",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "Preguntas Frecuentes",
+            "description": "Dudas sobre impresoras térmicas, Menú QR, KDS y licencias.",
+            "url": "https://pos.roosty.com.ar/faq",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 5,
+            "name": "Crear Demo Gratis",
+            "description": "Probá Roosty POS 14 días sin costo ni tarjeta de crédito.",
+            "url": "https://pos.roosty.com.ar/demo",
+          },
+        ],
       },
     ],
   };

@@ -16,25 +16,49 @@ export const metadata = {
     url: "https://pos.roosty.com.ar/funcionalidades",
     images: [
       {
-        url: "/roostylogo.png",
-        width: 300,
-        height: 186,
+        url: "/og-roosty-pos.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
         alt: "Roosty POS Módulos y Funcionalidades",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Módulos y Funcionalidades | Roosty POS",
     description:
       "Mapa de salón, Menú Digital QR sin comisiones, Cocina KDS y Arqueo Ciego de Caja.",
-    images: ["/roostylogo.png"],
+    images: ["/og-roosty-pos.png"],
   },
 };
 
 export default function FuncionalidadesPage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://pos.roosty.com.ar",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Módulos y Funcionalidades",
+        "item": "https://pos.roosty.com.ar/funcionalidades",
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#faf9f8] selection:bg-[#e85d45]/20 selection:text-[#e85d45]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Navbar />
       <FuncionalidadesContent />
       <FooterCTA />

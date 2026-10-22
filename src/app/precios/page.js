@@ -19,25 +19,49 @@ export const metadata = {
     url: "https://pos.roosty.com.ar/precios",
     images: [
       {
-        url: "/roostylogo.png",
-        width: 300,
-        height: 186,
+        url: "/og-roosty-pos.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
         alt: "Roosty POS Planes y Precios",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Planes y Precios | Roosty POS",
     description:
       "Abono anual con 2 meses de regalo, suscripción mensual o Licencia Founder para restaurantes, bares y cafeterías.",
-    images: ["/roostylogo.png"],
+    images: ["/og-roosty-pos.png"],
   },
 };
 
 export default function PreciosPage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://pos.roosty.com.ar",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Planes y Precios",
+        "item": "https://pos.roosty.com.ar/precios",
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#faf9f8] selection:bg-[#e85d45]/20 selection:text-[#e85d45] overflow-x-hidden w-full max-w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Navbar />
 
       <main className="flex-1 pt-32 pb-24 md:pt-36 w-full max-w-full">

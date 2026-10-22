@@ -18,22 +18,42 @@ export const metadata = {
     url: "https://pos.roosty.com.ar/comparativa",
     images: [
       {
-        url: "/roostylogo.png",
-        width: 300,
-        height: 186,
+        url: "/og-roosty-pos.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
         alt: "Roosty POS Comparativa",
       },
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Comparativa | Roosty POS vs Sistemas Tradicionales",
     description: "Comparativa frente a sistemas obsoletos con servidores locales y hardware propietario.",
-    images: ["/roostylogo.png"],
+    images: ["/og-roosty-pos.png"],
   },
 };
 
 export default function ComparativaPage() {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://pos.roosty.com.ar",
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Comparativa",
+        "item": "https://pos.roosty.com.ar/comparativa",
+      },
+    ],
+  };
+
   const advantages = [
     {
       icon: Globe,
@@ -45,7 +65,7 @@ export default function ComparativaPage() {
       icon: Printer,
       title: "Cero Hardware Propietario",
       description:
-        "Usá cualquier impresora térmica estándar de 80mm o 58mm (USB, Red o Bluetooth). No te obligamos a comprar terminales caras.",
+        "Usá cualquier impresora térmica estándar de 80mm o 58mm por USB, Red o Bluetooth. No te obligamos a comprar terminales caras.",
     },
     {
       icon: Zap,
@@ -57,6 +77,10 @@ export default function ComparativaPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white overflow-x-hidden w-full max-w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <Navbar />
 
       <main className="flex-1 pt-32 pb-20 md:pt-36 w-full max-w-full overflow-x-hidden">
