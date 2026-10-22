@@ -3,6 +3,13 @@ import fs from "fs/promises";
 import path from "path";
 
 export async function POST(request) {
+  if (process.env.NODE_ENV === "production") {
+    return NextResponse.json(
+      { error: "Endpoint habilitado únicamente en entorno local de desarrollo." },
+      { status: 403 }
+    );
+  }
+
   try {
     const { dataUrl } = await request.json();
     if (!dataUrl || !dataUrl.startsWith("data:image/png;base64,")) {
