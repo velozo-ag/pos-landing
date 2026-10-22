@@ -14,13 +14,16 @@ import {
   Minimize2,
   Loader2,
   ShieldCheck,
+  Sparkles,
 } from "lucide-react";
 
 export default function CatalogCardsStudio() {
   const [previewScale, setPreviewScale] = useState(0.85);
   const [exportQuality, setExportQuality] = useState("uhd"); // "uhd" (3240x3240) | "1080" (1080x1080)
   const [downloadingId, setDownloadingId] = useState(null);
+  const [ogSavedStatus, setOgSavedStatus] = useState(null);
 
+  const ogCardRef = useRef(null);
   const card1Ref = useRef(null);
   const card2Ref = useRef(null);
   const card3Ref = useRef(null);
@@ -48,47 +51,65 @@ export default function CatalogCardsStudio() {
     );
   };
 
-  const handleDownloadCard = async (ref, filename, id) => {
-    if (!ref.current) return;
+  const renderCardToDataUrl = async (
+    ref,
+    id,
+    width = 1080,
+    height = 1080,
+    forceExactSize = false
+  ) => {
     const prevScale = previewScale;
+    if (prevScale !== 1) {
+      setPreviewScale(1);
+      await new Promise((r) => setTimeout(r, 200));
+    }
+    await inlineOriginalImages(ref.current);
+
+    const htmlToImage = await new Function(
+      "url",
+      "return import(url)"
+    )("https://esm.sh/html-to-image@1.11.11");
+
+    const isLight = id === "card-1" || id === "card-og";
+    const hiResCanvas = await htmlToImage.toCanvas(ref.current, {
+      width,
+      height,
+      pixelRatio: forceExactSize ? 2 : 3,
+      cacheBust: false,
+      backgroundColor: isLight ? "#faf9f8" : "#09090b",
+    });
+
+    let finalDataUrl;
+    if (exportQuality === "1080" || forceExactSize) {
+      const outCanvas = document.createElement("canvas");
+      outCanvas.width = width;
+      outCanvas.height = height;
+      const ctx = outCanvas.getContext("2d");
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
+      ctx.drawImage(hiResCanvas, 0, 0, width, height);
+      finalDataUrl = outCanvas.toDataURL("image/png", 1.0);
+    } else {
+      finalDataUrl = hiResCanvas.toDataURL("image/png", 1.0);
+    }
+
+    if (prevScale !== 1) {
+      setPreviewScale(prevScale);
+    }
+    return finalDataUrl;
+  };
+
+  const handleDownloadCard = async (
+    ref,
+    filename,
+    id,
+    width = 1080,
+    height = 1080
+  ) => {
+    if (!ref.current) return;
     try {
       setDownloadingId(id);
-
-      // 1. Poner el contenedor en escala 1:1 real y convertir las imágenes a sus bytes HD completos
-      if (prevScale !== 1) {
-        setPreviewScale(1);
-        await new Promise((r) => setTimeout(r, 200));
-      }
-      await inlineOriginalImages(ref.current);
-
-      const htmlToImage = await new Function(
-        "url",
-        "return import(url)"
-      )("https://esm.sh/html-to-image@1.11.11");
-
-      // 2. Renderizar a Canvas en 3x Retina (3240 x 3240 px reales)
-      const hiResCanvas = await htmlToImage.toCanvas(ref.current, {
-        width: 1080,
-        height: 1080,
-        pixelRatio: 3,
-        cacheBust: false,
-        backgroundColor: id === "card-1" ? "#faf9f8" : "#09090b",
-      });
-
-      let finalDataUrl;
-      if (exportQuality === "1080") {
-        const outCanvas = document.createElement("canvas");
-        outCanvas.width = 1080;
-        outCanvas.height = 1080;
-        const ctx = outCanvas.getContext("2d");
-        ctx.imageSmoothingEnabled = true;
-        ctx.imageSmoothingQuality = "high";
-        ctx.drawImage(hiResCanvas, 0, 0, 1080, 1080);
-        finalDataUrl = outCanvas.toDataURL("image/png", 1.0);
-      } else {
-        finalDataUrl = hiResCanvas.toDataURL("image/png", 1.0);
-      }
-
+      const finalDataUrl = await renderCardToDataUrl(ref, id, width, height);
       const link = document.createElement("a");
       link.download = filename;
       link.href = finalDataUrl;
@@ -96,10 +117,31 @@ export default function CatalogCardsStudio() {
     } catch (err) {
       console.error("Error exportando PNG:", err);
       alert(
-        "Si tu navegador bloqueó la descarga automática, poné la vista en Tamaño Real 1080x1080 y hacé captura directa."
+        "Si tu navegador bloqueó la descarga automática, poné la vista en Tamaño Real y hacé captura directa."
       );
     } finally {
-      setPreviewScale(prevScale);
+      setDownloadingId(null);
+    }
+  };
+
+  const handleSetAsOgImage = async (ref, id, width, height) => {
+    if (!ref.current) return;
+    try {
+      setDownloadingId(`${id}-og`);
+      setOgSavedStatus(null);
+      const dataUrl = await renderCardToDataUrl(ref, id, width, height, true);
+      const res = await fetch("/api/save-og", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dataUrl }),
+      });
+      if (!res.ok) throw new Error("Error al guardar en /api/save-og");
+      setOgSavedStatus(id);
+      setTimeout(() => setOgSavedStatus(null), 5000);
+    } catch (err) {
+      console.error("Error guardando og:image:", err);
+      alert("No se pudo guardar automáticamente en public/og-roosty-pos.png.");
+    } finally {
       setDownloadingId(null);
     }
   };
@@ -108,19 +150,25 @@ export default function CatalogCardsStudio() {
     await handleDownloadCard(
       card1Ref,
       "01-roosty-pos-portada.png",
-      "card-1"
+      "card-1",
+      1080,
+      1080
     );
     await new Promise((r) => setTimeout(r, 450));
     await handleDownloadCard(
       card2Ref,
       "02-roosty-pos-flujo-cocina.png",
-      "card-2"
+      "card-2",
+      1080,
+      1080
     );
     await new Promise((r) => setTimeout(r, 450));
     await handleDownloadCard(
       card3Ref,
       "03-roosty-pos-beneficios-socios.png",
-      "card-3"
+      "card-3",
+      1080,
+      1080
     );
   };
 
@@ -226,37 +274,270 @@ export default function CatalogCardsStudio() {
 
       <div className="max-w-7xl mx-auto space-y-16 pb-24">
         {/* ═══════════════════════════════════════════════════════════════════
+            IMAGEN OG — PREVISUALIZACIÓN DE LINK EN WHATSAPP / REDES (1200x630)
+        ═══════════════════════════════════════════════════════════════════ */}
+        <div className="space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-800 pb-3">
+            <div>
+              <span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold">
+                OG:IMAGE • PREVISUALIZACIÓN DE LINK EN WHATSAPP Y REDES (1200×630 PX)
+              </span>
+              <h2 className="text-lg font-bold text-white">
+                Portada Oficial adaptada a 1200×630 (Sin recortes en el chat de WhatsApp)
+              </h2>
+            </div>
+            <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-auto">
+              <button
+                type="button"
+                onClick={() =>
+                  handleSetAsOgImage(ogCardRef, "card-og", 1200, 630)
+                }
+                disabled={Boolean(downloadingId)}
+                className="px-4 py-2 rounded-xl bg-[#e85d45] hover:bg-[#d44c34] text-white text-xs font-bold flex items-center gap-2 shadow-md shadow-[#e85d45]/20 cursor-pointer"
+              >
+                {downloadingId === "card-og-og" ? (
+                  <Loader2 className="w-4 h-4 animate-spin text-white" />
+                ) : ogSavedStatus === "card-og" ? (
+                  <Check className="w-4 h-4 text-white" />
+                ) : (
+                  <Sparkles className="w-4 h-4 text-white" />
+                )}
+                <span>
+                  {ogSavedStatus === "card-og"
+                    ? "¡Guardada en /og-roosty-pos.png!"
+                    : "Fijar como og:image de la Web"}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() =>
+                  handleDownloadCard(
+                    ogCardRef,
+                    "og-roosty-pos.png",
+                    "card-og",
+                    1200,
+                    630
+                  )
+                }
+                disabled={downloadingId === "card-og"}
+                className="px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold flex items-center gap-2 border border-zinc-700 cursor-pointer"
+              >
+                {downloadingId === "card-og" ? (
+                  <Loader2 className="w-4 h-4 animate-spin text-[#e85d45]" />
+                ) : (
+                  <Download className="w-4 h-4 text-[#e85d45]" />
+                )}
+                <span>Descargar 1200×630 PNG</span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            className="w-full overflow-x-auto flex justify-center bg-zinc-900/40 rounded-3xl p-6 border border-zinc-800/80"
+            style={{
+              height:
+                previewScale === 1
+                  ? "680px"
+                  : `${630 * previewScale + 48}px`,
+            }}
+          >
+            <div
+              style={{
+                width: "1200px",
+                height: "630px",
+                transform: `scale(${previewScale})`,
+                transformOrigin: "top center",
+              }}
+              className="shrink-0"
+            >
+              {/* 1200x630 CANVAS OG — MISMA COMPOSICIÓN QUE CARD 1 SIN RECORTES */}
+              <div
+                ref={ogCardRef}
+                style={{ width: "1200px", height: "630px" }}
+                className="w-[1200px] h-[630px] bg-[#faf9f8] text-zinc-950 relative overflow-hidden flex flex-col justify-between px-12 py-6 select-none font-sans antialiased"
+              >
+                {/* Smooth ambient warmth */}
+                <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-[#e85d45]/[0.06] blur-[100px] pointer-events-none" />
+                <div className="absolute -bottom-24 -left-24 w-[420px] h-[420px] rounded-full bg-amber-500/[0.06] blur-[100px] pointer-events-none" />
+
+                {/* TOP HEADER (Logo + separador + ROOSTY POS // GASTRONOMÍA + Título) */}
+                <div className="relative z-20 flex flex-col items-center text-center">
+                  <div className="flex items-center gap-3.5 mb-2">
+                    <img
+                      src="/roostylogoname.png"
+                      alt="Roosty POS"
+                      className="h-10 w-auto block"
+                    />
+                    <span className="h-5 w-[1.5px] bg-zinc-300" />
+                    <span className="px-3.5 py-1 rounded-full bg-zinc-900 text-white font-mono text-xs font-extrabold tracking-[0.2em] uppercase shadow-sm">
+                      ROOSTY POS // GASTRONOMÍA
+                    </span>
+                  </div>
+
+                  <h2 className="font-serif text-[38px] font-black tracking-tight text-zinc-950 leading-[1.06]">
+                    Tu salón, cocina y carta QR{" "}
+                    <span className="text-[#e85d45]">en un solo lugar.</span>
+                  </h2>
+                </div>
+
+                {/* CENTER STAGE: Real POS Screenshot in Notebook + Real menucoffee.png in Tilted Phone + Real TICKET COMANDA */}
+                <div className="relative z-20 flex-1 my-1 flex items-center justify-center">
+                  {/* 1. NOTEBOOK CON CAPTURA REAL REESCALADA */}
+                  <div className="w-[620px] -ml-10 -mt-2 relative z-10">
+                    <div className="bg-[#09090b] rounded-t-[20px] p-2.5 border-[5px] border-zinc-800 shadow-[0_25px_65px_-12px_rgba(0,0,0,0.45)]">
+                      <div className="flex items-center justify-between pb-1.5 px-2">
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-rose-500/90" />
+                          <span className="w-2 h-2 rounded-full bg-amber-500/90" />
+                          <span className="w-2 h-2 rounded-full bg-emerald-500/90" />
+                          <span className="ml-2 font-mono text-[10px] font-bold text-zinc-400">
+                            pos.roosty.com.ar — Terminal de Salón y Comandas
+                          </span>
+                        </div>
+                        <span className="px-2 py-0.5 rounded-full bg-zinc-900 text-amber-400 font-mono text-[9px] font-bold border border-zinc-700">
+                          ● EN VIVO
+                        </span>
+                      </div>
+
+                      <div className="rounded-lg overflow-hidden border border-zinc-800 bg-[#09090b]">
+                        <img
+                          src="/catalog-hd/pos-comanda-hd.png"
+                          alt="Roosty POS Terminal"
+                          className="w-full h-auto block"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Laptop Aluminum Base */}
+                    <div className="mx-auto w-[660px] -ml-[20px] h-3.5 bg-gradient-to-b from-zinc-300 to-zinc-400 rounded-b-xl border-t border-zinc-200 flex items-center justify-center shadow-lg">
+                      <div className="w-24 h-1 rounded-full bg-zinc-500/70" />
+                    </div>
+                  </div>
+
+                  {/* 2. CELULAR INCLINADO CON CAPTURA REAL menucoffee-hd.png */}
+                  <div className="absolute right-10 top-1/2 -translate-y-[48%] -rotate-6 z-30 w-[195px]">
+                    <div className="mb-1.5 flex justify-center">
+                      <div className="px-3 py-1 rounded-full bg-zinc-900 text-amber-400 border border-zinc-700 shadow-lg font-mono text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                        <Smartphone className="w-3 h-3 text-amber-400" />
+                        <span>Carta Digital QR</span>
+                      </div>
+                    </div>
+
+                    <div className="p-[3px] rounded-[30px] bg-gradient-to-tr from-zinc-800 via-zinc-400 to-zinc-600 shadow-[15px_25px_60px_-10px_rgba(0,0,0,0.65)]">
+                      <div className="rounded-[27px] p-1.5 bg-black border border-zinc-800">
+                        <div className="rounded-[22px] overflow-hidden bg-[#110f0d] border border-zinc-800/90">
+                          <img
+                            src="/catalog-hd/menucoffee-hd.png"
+                            alt="Carta QR Roosty POS"
+                            className="w-full h-auto block"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 3. MODAL / TICKET REAL DE COMANDA */}
+                  <div className="absolute left-6 -bottom-1 z-30 w-[215px] -rotate-2">
+                    <div className="mb-1.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 text-white border border-zinc-700 shadow-lg">
+                      <Printer className="w-3.5 h-3.5 text-[#f59e0b]" />
+                      <span className="font-sans text-[10px] font-bold tracking-wide">
+                        Comandera Térmica 80mm / 58mm
+                      </span>
+                    </div>
+
+                    <div className="rounded-xl overflow-hidden border-2 border-zinc-700 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.55)] bg-[#09090b]">
+                      <img
+                        src="/catalog-hd/ticket-comanda-hd.png"
+                        alt="Ticket Comanda Térmica"
+                        className="w-full h-auto block"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* BOTTOM HIGHLIGHT BAR */}
+                <div className="relative z-20 flex items-center justify-between pt-2 border-t border-zinc-200/80">
+                  <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-zinc-900 text-white shadow-md border border-zinc-800">
+                    <div className="w-5 h-5 rounded-full bg-[#f59e0b] text-zinc-950 flex items-center justify-center shrink-0">
+                      <Check className="w-3.5 h-3.5 stroke-[3.5]" />
+                    </div>
+                    <span className="font-sans text-lg font-extrabold tracking-tight leading-none">
+                      0% Comisión por pedido
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-4 text-xs font-semibold text-zinc-600">
+                    <span>100% Web en la Nube</span>
+                    <span>•</span>
+                    <span>PC, Tablet y Celular</span>
+                    <span>•</span>
+                    <span className="font-mono font-bold text-[#e85d45] text-sm">
+                      pos.roosty.com.ar
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══════════════════════════════════════════════════════════════════
             IMAGEN 1 — LA PORTADA (CAPTURAS REALES REESCALADAS 3X HD)
         ═══════════════════════════════════════════════════════════════════ */}
         <div className="space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-zinc-800 pb-3">
             <div>
               <span className="text-xs font-mono uppercase tracking-widest text-[#e85d45] font-bold">
-                IMAGEN 01 • PORTADA DE CATÁLOGO (MINIATURA PRINCIPAL)
+                IMAGEN 01 • PORTADA DE CATÁLOGO (MINIATURA PRINCIPAL 1080×1080)
               </span>
               <h2 className="text-lg font-bold text-white">
                 Capturas Reales: POS COMANDA MESA + menucoffee.png Inclinado + TICKET COMANDA
               </h2>
             </div>
-            <button
-              type="button"
-              onClick={() =>
-                handleDownloadCard(
-                  card1Ref,
-                  "01-roosty-pos-portada.png",
-                  "card-1"
-                )
-              }
-              disabled={downloadingId === "card-1"}
-              className="px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold flex items-center gap-2 border border-zinc-700 cursor-pointer self-start sm:self-auto"
-            >
-              {downloadingId === "card-1" ? (
-                <Loader2 className="w-4 h-4 animate-spin text-[#e85d45]" />
-              ) : (
-                <Download className="w-4 h-4 text-[#e85d45]" />
-              )}
-              <span>Descargar Imagen 1 (PNG Ultra HD)</span>
-            </button>
+            <div className="flex flex-wrap items-center gap-2.5 self-start sm:self-auto">
+              <button
+                type="button"
+                onClick={() =>
+                  handleSetAsOgImage(card1Ref, "card-1", 1080, 1080)
+                }
+                disabled={Boolean(downloadingId)}
+                className="px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-amber-400 text-xs font-bold flex items-center gap-2 border border-zinc-700 cursor-pointer"
+              >
+                {downloadingId === "card-1-og" ? (
+                  <Loader2 className="w-4 h-4 animate-spin text-amber-400" />
+                ) : ogSavedStatus === "card-1" ? (
+                  <Check className="w-4 h-4 text-amber-400" />
+                ) : (
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                )}
+                <span>
+                  {ogSavedStatus === "card-1"
+                    ? "¡Guardada en /og-roosty-pos.png!"
+                    : "Usar esta 1080×1080 como og:image"}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() =>
+                  handleDownloadCard(
+                    card1Ref,
+                    "01-roosty-pos-portada.png",
+                    "card-1"
+                  )
+                }
+                disabled={downloadingId === "card-1"}
+                className="px-4 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-bold flex items-center gap-2 border border-zinc-700 cursor-pointer"
+              >
+                {downloadingId === "card-1" ? (
+                  <Loader2 className="w-4 h-4 animate-spin text-[#e85d45]" />
+                ) : (
+                  <Download className="w-4 h-4 text-[#e85d45]" />
+                )}
+                <span>Descargar Imagen 1 (PNG Ultra HD)</span>
+              </button>
+            </div>
           </div>
 
           <div
